@@ -22,6 +22,72 @@
         android:text="@string/previous"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_second" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:background="@android:color/white"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp"
+        tools:ignore="MissingConstraints">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/teal_200">
+            <TextView
+                android:text="1's"
+                android:textSize="30dp"
+                android:textColor="#000"
+                android:layout_gravity="left"
+                />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="2's"
+                android:textColor="#000"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="3's"
+                android:textColor="#000"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="4's"
+                android:textColor="#000"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_gravity="center"
+                android:text="5's"
+                android:textColor="#000"
+                android:textSize="30dp" />
+
+            <TextView
+                android:layout_gravity="right"
+                android:text="6's"
+                android:textColor="#000"
+                android:textSize="30dp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
