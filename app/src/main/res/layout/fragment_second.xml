@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".SecondFragment">
 
-    <TextView
-        android:id="@+id/textview_second"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/button_second"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/button_second"
         android:layout_width="wrap_content"
@@ -23,71 +14,337 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textview_second" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="40dp"
-        android:background="@android:color/white"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp"
+        android:id="@+id/tableLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:stretchColumns="*"
         tools:ignore="MissingConstraints">
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/teal_200">
-            <TextView
-                android:text="1's"
-                android:textSize="30dp"
-                android:textColor="#000"
-                android:layout_gravity="left"
-                />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            android:background="@color/teal_200"
 
             <TextView
-                android:layout_gravity="center"
-                android:text="2's"
-                android:textColor="#000"
-                android:textSize="30dp" />
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="center"
-                android:text="3's"
-                android:textColor="#000"
-                android:textSize="30dp" />
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/two"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="center"
-                android:text="4's"
-                android:textColor="#000"
-                android:textSize="30dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/three"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="center"
-                android:text="5's"
-                android:textColor="#000"
-                android:textSize="30dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/four"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="right"
-                android:text="6's"
-                android:textColor="#000"
-                android:textSize="30dp" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/five"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/six"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+            android:background="@color/teal_200"
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/tok"
+
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/fok"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/full_house"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/sm_straight"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/lrg_straight"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/full_house"
+                android:textColor="#000" />
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/yahtzee"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/yahtzee_bonus"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/up_bonus"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/up_total"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/low_total"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/total"
+                android:textColor="#000" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="0"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+        </TableRow>
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:stretchColumns="*"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+        tools:ignore="MissingConstraints">
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/d1"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/d2"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/d3"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/d4"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_gravity="start"
+                android:text="@string/d5"
+                android:textColor="#000" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            android:background="@color/teal_200">
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0"
+                 />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0"
+                />
+            <Button
+                android:layout_width="40dp"
+                android:text="0"
+                />
+            <Button
+                android:layout_width="40dp"
+                android:text="0"
+                />
+            <Button
+                android:layout_width="40dp"
+                android:text="0"
+                />
+
+
+        </TableRow>
     </TableLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
