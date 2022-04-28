@@ -22,7 +22,6 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -38,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         put("yahtzee", 0); put("yahtzee_bonus", 0); put("upper_bonus", 0);
         put("upper_total", 0); put("lower_total", 0); put("grand_total", 0);
     }};
+    private int round_number = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
