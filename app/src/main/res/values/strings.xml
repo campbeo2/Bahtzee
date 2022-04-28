@@ -7,12 +7,10 @@
     <string name="startGame">Start Game</string>
     <string name="previous">Restart</string>
 
-    <integer name="name">0</integer>
-
     <string name="hello_first_fragment">Game rules and details</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <!-- Strings for the table-->
+    <!-- Strings for the tables-->
     <string name="one">1\'s</string>
     <string name="two">2\'s</string>
     <string name="three">3\'s</string>
@@ -39,7 +37,5 @@
     <string name="d3">Dice 3</string>
     <string name="d4">Dice 4</string>
     <string name="d5">Dice 5</string>
-
-
 
 </resources>
