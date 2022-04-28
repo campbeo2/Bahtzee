@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="one_score">0</integer>
+    <integer name="two_score">0</integer>
+    <integer name="three_score">0</integer>
+    <integer name="four_score">0</integer>
+    <integer name="five_score">0</integer>
+    <integer name="six_score">0</integer>
+</resources>

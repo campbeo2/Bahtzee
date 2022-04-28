@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/round2_button"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SecondFragment">
@@ -88,37 +89,37 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
@@ -130,73 +131,73 @@
             android:background="@color/teal_200"
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/tok"
 
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/fok"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/full_house"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/sm_straight"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/lrg_straight"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/full_house"
                 android:textColor="#000" />
         </TableRow>
 
         <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:gravity="center">
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
@@ -207,32 +208,32 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/yahtzee"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/yahtzee_bonus"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/up_bonus"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/up_total"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/low_total"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/total"
                 android:textColor="#000" />
         </TableRow>
@@ -242,80 +243,94 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="0"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
         </TableRow>
     </TableLayout>
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:text="Roll Round 1"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <TableLayout
+        android:id="@+id/tableLayout2"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:gravity="center"
         android:stretchColumns="*"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout"
         tools:ignore="MissingConstraints">
+
         <TableRow
             android:layout_width="0dp"
             android:layout_height="wrap_content">
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/d1"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/d2"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/d3"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/d4"
                 android:textColor="#000" />
 
             <TextView
-                android:layout_gravity="start"
+                android:gravity="center"
                 android:text="@string/d5"
                 android:textColor="#000" />
 
         </TableRow>
+
         <TableRow
             android:layout_width="0dp"
             android:layout_height="wrap_content">
@@ -323,27 +338,184 @@
 
             <Button
                 android:layout_width="40dp"
-                android:text="0"
-                 />
+                android:text="0" />
 
             <Button
                 android:layout_width="40dp"
-                android:text="0"
-                />
-            <Button
-                android:layout_width="40dp"
-                android:text="0"
-                />
-            <Button
-                android:layout_width="40dp"
-                android:text="0"
-                />
-            <Button
-                android:layout_width="40dp"
-                android:text="0"
-                />
+                android:text="0" />
 
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
 
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="8dp"
+        android:text="Roll Round 2"
+        app:layout_constraintBottom_toTopOf="@+id/button_second"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TableLayout
+        android:id="@+id/tableLayout3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:gravity="center"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        tools:ignore="MissingConstraints">
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d1"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d2"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d3"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d4"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d5"
+                android:textColor="#000" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            android:background="@color/teal_200">
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="8dp"
+        android:text="Roll Round 3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tableLayout3"
+        tools:ignore="MissingConstraints" />
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:gravity="center"
+        android:stretchColumns="*"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintTop_toBottomOf="@+id/button4"
+        tools:ignore="MissingConstraints">
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d1"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d2"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d3"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d4"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:text="@string/d5"
+                android:textColor="#000" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            android:background="@color/teal_200">
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
+
+            <Button
+                android:layout_width="40dp"
+                android:text="0" />
         </TableRow>
     </TableLayout>
 
