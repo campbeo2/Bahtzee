@@ -85,44 +85,45 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/dataRow"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
-                android:gravity="center"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#000" />
+<!--            <TextView-->
+<!--                android:gravity="center"-->
+<!--                android:text="0"-->
+<!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--                android:textColor="#000" />-->
 
-            <TextView
-                android:gravity="center"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#000" />
+<!--            <TextView-->
+<!--                android:gravity="center"-->
+<!--                android:text="0"-->
+<!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--                android:textColor="#000" />-->
 
-            <TextView
-                android:gravity="center"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#000" />
+<!--            <TextView-->
+<!--                android:gravity="center"-->
+<!--                android:text="0"-->
+<!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--                android:textColor="#000" />-->
 
-            <TextView
-                android:gravity="center"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#000" />
+<!--            <TextView-->
+<!--                android:gravity="center"-->
+<!--                android:text="0"-->
+<!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--                android:textColor="#000" />-->
 
-            <TextView
-                android:gravity="center"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#000" />
+<!--            <TextView-->
+<!--                android:gravity="center"-->
+<!--                android:text="0"-->
+<!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--                android:textColor="#000" />-->
 
-            <TextView
-                android:gravity="center"
-                android:text="0"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#000" />
+<!--            <TextView-->
+<!--                android:gravity="center"-->
+<!--                android:text="0"-->
+<!--                android:textAppearance="?android:attr/textAppearanceLarge"-->
+<!--                android:textColor="#000" />-->
         </TableRow>
 
         <TableRow
@@ -158,14 +159,14 @@
 
             <TextView
                 android:gravity="center"
-                android:text="@string/full_house"
+                android:text="@string/chance"
                 android:textColor="#000" />
         </TableRow>
 
         <TableRow
+            android:id="@+id/dataRow2"
             android:layout_height="match_parent"
             android:gravity="center">
-
             <TextView
                 android:gravity="center"
                 android:text="0"
@@ -239,6 +240,7 @@
         </TableRow>
 
         <TableRow
+            android:id="@+id/dataRow3"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -284,9 +286,12 @@
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
+        android:layout_marginStart="134dp"
+        android:layout_marginEnd="134dp"
         android:text="Roll Round 1"
+        android:onClick="rollDice"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints" />
 
@@ -337,22 +342,27 @@
             android:background="@color/teal_200">
 
             <Button
+                android:id="@+id/but1"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but2"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but3"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but4"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but5"
                 android:layout_width="40dp"
                 android:text="0" />
 
@@ -363,10 +373,13 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
+        android:layout_marginStart="134dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="134dp"
         android:text="Roll Round 2"
+        android:onClick="rollDiceTwo"
         app:layout_constraintBottom_toTopOf="@+id/button_second"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout2"
         app:layout_constraintVertical_bias="0.0" />
@@ -419,22 +432,27 @@
             android:background="@color/teal_200">
 
             <Button
+                android:id="@+id/but6"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but7"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but8"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but9"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but10"
                 android:layout_width="40dp"
                 android:text="0" />
         </TableRow>
@@ -444,9 +462,12 @@
         android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="132dp"
+        android:layout_marginStart="134dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="134dp"
         android:text="Roll Round 3"
+        android:onClick="rollDiceThree"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tableLayout3"
         tools:ignore="MissingConstraints" />
@@ -498,22 +519,27 @@
             android:background="@color/teal_200">
 
             <Button
+                android:id="@+id/but11"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but12"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but13"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but14"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
+                android:id="@+id/but15"
                 android:layout_width="40dp"
                 android:text="0" />
         </TableRow>
