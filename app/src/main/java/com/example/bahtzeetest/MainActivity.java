@@ -60,17 +60,18 @@ public class MainActivity extends AppCompatActivity {
             int rand_number = rand.nextInt(6) + 1;
             rand_array[i] = rand_number;
         }
-
         Button but1 = (Button) findViewById(R.id.but1);
-        but1.setText(Integer.toString(rand_array[0]));
-        Button but2 = (Button) findViewById(R.id.but2);
-        but2.setText(Integer.toString(rand_array[1]));
-        Button but3 = (Button) findViewById(R.id.but3);
-        but3.setText(Integer.toString(rand_array[2]));
-        Button but4 = (Button) findViewById(R.id.but4);
-        but4.setText(Integer.toString(rand_array[3]));
-        Button but5 = (Button) findViewById(R.id.but5);
-        but5.setText(Integer.toString(rand_array[4]));
+        if (but1.getText().equals("0")) {
+            but1.setText(Integer.toString(rand_array[0]));
+            Button but2 = (Button) findViewById(R.id.but2);
+            but2.setText(Integer.toString(rand_array[1]));
+            Button but3 = (Button) findViewById(R.id.but3);
+            but3.setText(Integer.toString(rand_array[2]));
+            Button but4 = (Button) findViewById(R.id.but4);
+            but4.setText(Integer.toString(rand_array[3]));
+            Button but5 = (Button) findViewById(R.id.but5);
+            but5.setText(Integer.toString(rand_array[4]));
+        }
     }
 
     public void rollDiceTwo(View v) {
@@ -82,15 +83,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Button but1 = (Button) findViewById(R.id.but6);
-        but1.setText(Integer.toString(rand_array[0]));
+        if (but1.getText().equals("0"))
+            but1.setText(Integer.toString(rand_array[0]));
         Button but2 = (Button) findViewById(R.id.but7);
-        but2.setText(Integer.toString(rand_array[1]));
+        if (but2.getText().equals("0"))
+            but2.setText(Integer.toString(rand_array[1]));
         Button but3 = (Button) findViewById(R.id.but8);
-        but3.setText(Integer.toString(rand_array[2]));
+        if (but3.getText().equals("0"))
+            but3.setText(Integer.toString(rand_array[2]));
         Button but4 = (Button) findViewById(R.id.but9);
+        if (but4.getText().equals("0"))
         but4.setText(Integer.toString(rand_array[3]));
         Button but5 = (Button) findViewById(R.id.but10);
-        but5.setText(Integer.toString(rand_array[4]));
+        if (but5.getText().equals("0"))
+            but5.setText(Integer.toString(rand_array[4]));
         }
 
     public void rollDiceThree(View v) {
@@ -100,17 +106,98 @@ public class MainActivity extends AppCompatActivity {
             int rand_number = rand.nextInt(6) + 1;
             rand_array[i] = rand_number;
         }
-
+        Button but1_parent = (Button) findViewById(R.id.but6);
         Button but1 = (Button) findViewById(R.id.but11);
-        but1.setText(Integer.toString(rand_array[0]));
+        if (but1.getText().equals("0"))
+            but1.setText(Integer.toString(rand_array[0]));
         Button but2 = (Button) findViewById(R.id.but12);
-        but2.setText(Integer.toString(rand_array[1]));
+        if (but2.getText().equals("0"))
+            but2.setText(Integer.toString(rand_array[1]));
         Button but3 = (Button) findViewById(R.id.but13);
-        but3.setText(Integer.toString(rand_array[2]));
+        if (but3.getText().equals("0"))
+            but3.setText(Integer.toString(rand_array[2]));
         Button but4 = (Button) findViewById(R.id.but14);
-        but4.setText(Integer.toString(rand_array[3]));
+        if (but4.getText().equals("0"))
+            but4.setText(Integer.toString(rand_array[3]));
         Button but5 = (Button) findViewById(R.id.but15);
-        but5.setText(Integer.toString(rand_array[4]));
+        if (but5.getText().equals("0"))
+            but5.setText(Integer.toString(rand_array[4]));
+    }
+
+    public void lockDiceOne (View v) {
+        Button but = (Button) findViewById(R.id.but1);
+        String num = (String) but.getText();
+        Button round2_but = (Button) findViewById(R.id.but6);
+        round2_but.setText(num);
+    }
+
+    public void lockDiceTwo (View v) {
+        Button but = (Button) findViewById(R.id.but2);
+        String num = (String) but.getText();
+        Button round2_but = (Button) findViewById(R.id.but7);
+        round2_but.setText(num);
+    }
+
+    public void lockDiceThree (View v) {
+        Button but = (Button) findViewById(R.id.but3);
+        String num = (String) but.getText();
+        Button round2_but = (Button) findViewById(R.id.but8);
+        round2_but.setText(num);
+    }
+
+    public void lockDiceFour (View v) {
+        Button but = (Button) findViewById(R.id.but4);
+        String num = (String) but.getText();
+        Button round2_but = (Button) findViewById(R.id.but9);
+        round2_but.setText(num);
+    }
+
+    public void lockDiceFive (View v) {
+        Button but = (Button) findViewById(R.id.but5);
+        String num = (String) but.getText();
+        Button round2_but = (Button) findViewById(R.id.but5);
+        round2_but.setText(num);
+        Button round3_but = (Button) findViewById(R.id.but10);
+        round3_but.setText(num);
+    }
+
+    public void lockDiceOneTwo (View v) {
+        Button round2_but = (Button) findViewById(R.id.but6);
+        String num = (String) round2_but.getText();
+        round2_but.setText(num);
+        Button round3_but = (Button) findViewById(R.id.but11);
+        round3_but.setText(num);
+    }
+    public void lockDiceTwoTwo (View v) {
+        Button round2_but = (Button) findViewById(R.id.but7);
+        String num = (String) round2_but.getText();
+        round2_but.setText(num);
+        Button round3_but = (Button) findViewById(R.id.but12);
+        round3_but.setText(num);
+    }
+
+    public void lockDiceThreeTwo (View v) {
+        Button round2_but = (Button) findViewById(R.id.but8);
+        String num = (String) round2_but.getText();
+        round2_but.setText(num);
+        Button round3_but = (Button) findViewById(R.id.but13);
+        round3_but.setText(num);
+    }
+
+    public void lockDiceFourTwo (View v) {
+        Button round2_but = (Button) findViewById(R.id.but9);
+        String num = (String) round2_but.getText();
+        round2_but.setText(num);
+        Button round3_but = (Button) findViewById(R.id.but14);
+        round3_but.setText(num);
+    }
+
+    public void lockDiceFiveTwo (View v) {
+        Button round2_but = (Button) findViewById(R.id.but10);
+        String num = (String) round2_but.getText();
+        round2_but.setText(num);
+        Button round3_but = (Button) findViewById(R.id.but15);
+        round3_but.setText(num);
     }
 
     public void allocateTable (View v) {

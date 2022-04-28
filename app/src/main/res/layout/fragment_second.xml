@@ -343,29 +343,33 @@
 
             <Button
                 android:id="@+id/but1"
+                android:onClick="lockDiceOne"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
                 android:id="@+id/but2"
+                android:onClick="lockDiceTwo"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
                 android:id="@+id/but3"
+                android:onClick="lockDiceThree"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
                 android:id="@+id/but4"
+                android:onClick="lockDiceFour"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
                 android:id="@+id/but5"
+                android:onClick="lockDiceFive"
                 android:layout_width="40dp"
                 android:text="0" />
-
         </TableRow>
     </TableLayout>
 
@@ -433,26 +437,31 @@
 
             <Button
                 android:id="@+id/but6"
+                android:onClick="lockDiceOneTwo"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
                 android:id="@+id/but7"
+                android:onClick="lockDiceTwoTwo"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
                 android:id="@+id/but8"
+                android:onClick="lockDiceThreeTwo"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
                 android:id="@+id/but9"
+                android:onClick="lockDiceFourTwo"
                 android:layout_width="40dp"
                 android:text="0" />
 
             <Button
                 android:id="@+id/but10"
+                android:onClick="lockDiceFiveTwo"
                 android:layout_width="40dp"
                 android:text="0" />
         </TableRow>
