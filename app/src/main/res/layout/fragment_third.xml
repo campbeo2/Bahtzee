@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/round3_button"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThirdFragment">
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center"
+        android:stretchColumns="*"
+        tools:ignore="MissingConstraints">
+
+        <TableRow
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:layout_width="20dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/one"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <Button
+                android:layout_width="10dp"
+                android:layout_height="50dp"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/two"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/three"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+        </TableRow>
+        <TableRow>
+            android:id="@+id/score_row1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <TextView
+                android:gravity="center"
+                android:id="@+id/one_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/two_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/three_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/four"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/five"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:text="@string/six"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/score_row2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/four_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/five_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/six_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <Button
+                android:gravity="center"
+                android:text="@string/tok"
+
+                android:textColor="#000" />
+
+            <Button
+                android:gravity="center"
+                android:text="@string/fok"
+                android:textColor="#000" />
+
+            <Button
+                android:gravity="center"
+                android:text="@string/full_house"
+                android:textColor="#000" />
+        </TableRow>
+        <TableRow
+            android:id="@+id/score_row3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <TextView
+                android:gravity="center"
+                android:id="@+id/three_of_kind_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/four_of_kind_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/full_house_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+        </TableRow>
+        <TableRow
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <Button
+                android:gravity="center"
+                android:text="@string/sm_straight"
+                android:textColor="#000" />
+
+            <Button
+                android:gravity="center"
+                android:text="@string/lrg_straight"
+                android:textColor="#000" />
+
+            <Button
+                android:gravity="center"
+                android:text="@string/chance"
+                android:textColor="#000" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/score_row4"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/sm_straight_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/lrg_straight_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/chance_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <Button
+                android:gravity="center"
+                android:text="@string/yahtzee"
+                android:textColor="#000" />
+
+        </TableRow>
+        <TableRow
+            android:id="@+id/score_row5"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/yahtzee_score"
+                android:text="@string/zero"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000" />
+
+        </TableRow>
+    </TableLayout>
+
+    <Button
+        android:id="@+id/button_third"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
