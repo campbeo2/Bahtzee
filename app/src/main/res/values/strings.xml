@@ -4,6 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">Home</string>
     <string name="second_fragment_label">Play Game</string>
+    <string name="third_fragment_label">Score Table</string>
     <string name="startGame">Start Game</string>
     <string name="previous">Restart</string>
 
@@ -38,4 +39,11 @@
     <string name="d4">Dice 4</string>
     <string name="d5">Dice 5</string>
 
+    <string name="zero">0</string>
+
+    <string name="roll1">Roll Round 1</string>
+    <string name="roll2">Roll Round 2</string>
+    <string name="roll3">Roll Round 3</string>
+
+    <string name="score_round">Score Round</string>
 </resources>

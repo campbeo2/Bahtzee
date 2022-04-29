@@ -1,13 +1,17 @@
 package com.example.bahtzeetest;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
-import com.google.android.material.snackbar.Snackbar;
-
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -17,42 +21,46 @@ import com.example.bahtzeetest.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    private Button score, cancel;
+
+    private PopupWindow scoreTable;
+    private LayoutInflater layoutInflater;
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private HashMap<String, Integer> map = new HashMap<String, Integer>(){{
         put("one", 0); put("two", 0); put("three", 0);
         put("four", 0); put("five", 0); put("six", 0);
-        put("three_of_Kind", 0); put("four_of_Kind", 0); put("full_house", 0);
+        put("three_of_kind", 0); put("four_of_kind", 0); put("full_house", 0);
         put("sm_straight", 0); put("lrg_straight", 0); put("chance", 0);
         put("yahtzee", 0); put("yahtzee_bonus", 0); put("upper_bonus", 0);
         put("upper_total", 0); put("lower_total", 0); put("grand_total", 0);
     }};
+    private int round_number = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         setSupportActionBar(binding.toolbar);
-
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     }
 
+    @SuppressLint("SetTextI18n")
     public void rollDice(View v) {
         Random rand = new Random();
         int[] rand_array = new int[5];
@@ -74,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     public void rollDiceTwo(View v) {
         Random rand = new Random();
         int[] rand_array = new int[5];
@@ -99,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
             but5.setText(Integer.toString(rand_array[4]));
         }
 
+    @SuppressLint("SetTextI18n")
     public void rollDiceThree(View v) {
         Random rand = new Random();
         int[] rand_array = new int[5];
@@ -106,7 +116,6 @@ public class MainActivity extends AppCompatActivity {
             int rand_number = rand.nextInt(6) + 1;
             rand_array[i] = rand_number;
         }
-        Button but1_parent = (Button) findViewById(R.id.but6);
         Button but1 = (Button) findViewById(R.id.but11);
         if (but1.getText().equals("0"))
             but1.setText(Integer.toString(rand_array[0]));
@@ -155,10 +164,8 @@ public class MainActivity extends AppCompatActivity {
     public void lockDiceFive (View v) {
         Button but = (Button) findViewById(R.id.but5);
         String num = (String) but.getText();
-        Button round2_but = (Button) findViewById(R.id.but5);
+        Button round2_but = (Button) findViewById(R.id.but10);
         round2_but.setText(num);
-        Button round3_but = (Button) findViewById(R.id.but10);
-        round3_but.setText(num);
     }
 
     public void lockDiceOneTwo (View v) {
@@ -201,10 +208,59 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void allocateTable (View v) {
-        TableLayout table1 = (TableLayout) findViewById(R.id.tableLayout);
-        TableRow row1 = (TableRow) findViewById(R.id.dataRow);
-        TextView t1 = new TextView(this);
-        t1.setText(map.get("one"));
+        TextView one_score = (TextView) findViewById(R.id.one_score);
+        one_score.setText(Integer.toString(map.get("one")));
+
+        TextView two_score = (TextView) findViewById(R.id.two_score);
+        two_score.setText(Integer.toString(map.get("two")));
+
+        TextView three_score = (TextView) findViewById(R.id.three_score);
+        three_score.setText(Integer.toString(map.get("three")));
+
+        TextView four_score = (TextView) findViewById(R.id.four_score);
+        four_score.setText(Integer.toString(map.get("four")));
+
+        TextView five_score = (TextView) findViewById(R.id.five_score);
+        five_score.setText(Integer.toString(map.get("five")));
+
+        TextView six_score = (TextView) findViewById(R.id.six_score);
+        six_score.setText(Integer.toString(map.get("six")));
+
+        TextView three_of_kind_score = (TextView) findViewById(R.id.three_of_kind_score);
+        three_of_kind_score.setText(Integer.toString(map.get("three_of_kind")));
+
+        TextView four_of_kind_score = (TextView) findViewById(R.id.four_of_kind_score);
+        four_of_kind_score.setText(Integer.toString(map.get("four_of_kind")));
+
+        TextView full_house_score = (TextView) findViewById(R.id.full_house_score);
+        full_house_score.setText(Integer.toString(map.get("full_house")));
+
+        TextView sm_straight_score = (TextView) findViewById(R.id.sm_straight_score);
+        sm_straight_score.setText(Integer.toString(map.get("sm_straight")));
+
+        TextView lrg_straight_score = (TextView) findViewById(R.id.lrg_straight_score);
+        lrg_straight_score.setText(Integer.toString(map.get("lrg_straight")));
+
+        TextView chance_score = (TextView) findViewById(R.id.chance_score);
+        chance_score.setText(Integer.toString(map.get("chance")));
+
+        TextView yahtzee_score = (TextView) findViewById(R.id.yahtzee_score);
+        yahtzee_score.setText(Integer.toString(map.get("yahtzee")));
+
+        TextView yahtzee_bonus_score = (TextView) findViewById(R.id.yahtzee_bonus_score);
+        yahtzee_bonus_score.setText(Integer.toString(map.get("yahtzee_bonus")));
+
+        TextView up_bonus_score = (TextView) findViewById(R.id.up_bonus_score);
+        up_bonus_score.setText(Integer.toString(map.get("upper_bonus")));
+
+        TextView up_score = (TextView) findViewById(R.id.up_score);
+        up_score.setText(Integer.toString(map.get("upper_total")));
+
+        TextView low_score = (TextView) findViewById(R.id.low_score);
+        low_score.setText(Integer.toString(map.get("lower_total")));
+
+        TextView total_score = (TextView) findViewById(R.id.total_score);
+        total_score.setText(Integer.toString(map.get("grand_total")));
     }
 
     @Override
