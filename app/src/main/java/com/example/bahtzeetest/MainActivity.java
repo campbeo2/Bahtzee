@@ -1,11 +1,15 @@
 package com.example.bahtzeetest;
 
 import android.annotation.SuppressLint;
+import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -28,17 +32,16 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button score, cancel;
-
-    private PopupWindow scoreTable;
-    private LayoutInflater layoutInflater;
-
+    SharedPreferences sharedPreferences;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
     private HashMap<String, Integer> map = new HashMap<String, Integer>(){{
@@ -49,8 +52,9 @@ public class MainActivity extends AppCompatActivity {
         put("yahtzee", 0); put("yahtzee_bonus", 0); put("upper_bonus", 0);
         put("upper_total", 0); put("lower_total", 0); put("grand_total", 0);
     }};
+    public static final String MyPREFERENCES = "MyPrefs" ;
     private int round_number = 0;
-    static ArrayList<Integer> scores = new ArrayList<>();
+    private ArrayList<Integer> scores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getScores(View view) {
-        TextView d1 = (TextView) findViewById(R.id.low_score);
+        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Button d1 = (Button) findViewById(R.id.but11);
         Button d2 = (Button) findViewById(R.id.but12);
         Button d3 = (Button) findViewById(R.id.but13);
         Button d4 = (Button) findViewById(R.id.but14);
@@ -74,9 +80,16 @@ public class MainActivity extends AppCompatActivity {
         int dice3 = Integer.parseInt((String) d3.getText());
         int dice4 = Integer.parseInt((String) d4.getText());
         int dice5 = Integer.parseInt((String) d5.getText());
-        scores.clear();
+
+        TextView t1 = (TextView) findViewById(R.id.one_score);
+       // t1.setText(Integer.toString(dice1));
+        editor.putString("Dice 1", d1.getText().toString());
+
+        editor.commit();
         scores.add(dice1); scores.add(dice2); scores.add(dice3);
         scores.add(dice4); scores.add(dice5);
+
+       // t1.setText(Integer.toString(scores.get(1)));
     }
 
 
@@ -137,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
             rand_array[i] = rand_number;
         }
         Button but1 = (Button) findViewById(R.id.but11);
-        if (but1.getText().equals("0"))
+        if (but1.getText().equals(""))
             but1.setText(Integer.toString(rand_array[0]));
         Button but2 = (Button) findViewById(R.id.but12);
         if (but2.getText().equals("0"))
@@ -283,16 +296,20 @@ public class MainActivity extends AppCompatActivity {
         total_score.setText(Integer.toString(map.get("grand_total")));
     }
 
-
     public void showScore (View v) {
         int round_score = 0;
+
+
         for (int i = 0; i < scores.size(); i++) {
             if (scores.get(i) == 1) {
                 round_score++;
             }
         }
         TextView one_score = (TextView) findViewById(R.id.one_score_table);
-        one_score.setText(Integer.toString(round_score));
+       // one_score.setText(Integer.toString(round_score));
+        one_score.setText(Integer.toString(scores.get(1)));
+
+
     }
 
     @Override
@@ -323,4 +340,17 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
+}
+
+class DiceScores extends Application {
+    private static ArrayList<Integer> scores = new ArrayList<>();
+
+    public void setDiceScores (ArrayList<Integer> arr) {
+        scores = arr;
+    }
+
+    public ArrayList<Integer> getDiceScores() {
+        return scores;
+    }
+
 }

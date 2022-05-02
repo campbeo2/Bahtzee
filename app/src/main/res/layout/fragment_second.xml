@@ -554,8 +554,9 @@
 
             <Button
                 android:id="@+id/but11"
-                android:layout_width="40dp"
-                android:text="@string/zero" />
+                android:layout_width="40dp"/>
+<!--                android:text="@string/zero" -->
+                />
 
             <Button
                 android:id="@+id/but12"
