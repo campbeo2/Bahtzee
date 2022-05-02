@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -27,6 +28,7 @@ import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         put("upper_total", 0); put("lower_total", 0); put("grand_total", 0);
     }};
     private int round_number = 0;
+    static ArrayList<Integer> scores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +62,23 @@ public class MainActivity extends AppCompatActivity {
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     }
+
+    public void getScores(View view) {
+        TextView d1 = (TextView) findViewById(R.id.low_score);
+        Button d2 = (Button) findViewById(R.id.but12);
+        Button d3 = (Button) findViewById(R.id.but13);
+        Button d4 = (Button) findViewById(R.id.but14);
+        Button d5 = (Button) findViewById(R.id.but15);
+        int dice1 = Integer.parseInt((String)d1.getText());
+        int dice2 = Integer.parseInt((String) d2.getText());
+        int dice3 = Integer.parseInt((String) d3.getText());
+        int dice4 = Integer.parseInt((String) d4.getText());
+        int dice5 = Integer.parseInt((String) d5.getText());
+        scores.clear();
+        scores.add(dice1); scores.add(dice2); scores.add(dice3);
+        scores.add(dice4); scores.add(dice5);
+    }
+
 
     @SuppressLint("SetTextI18n")
     public void rollDice(View v) {
@@ -261,6 +281,18 @@ public class MainActivity extends AppCompatActivity {
 
         TextView total_score = (TextView) findViewById(R.id.total_score);
         total_score.setText(Integer.toString(map.get("grand_total")));
+    }
+
+
+    public void showScore (View v) {
+        int round_score = 0;
+        for (int i = 0; i < scores.size(); i++) {
+            if (scores.get(i) == 1) {
+                round_score++;
+            }
+        }
+        TextView one_score = (TextView) findViewById(R.id.one_score_table);
+        one_score.setText(Integer.toString(round_score));
     }
 
     @Override

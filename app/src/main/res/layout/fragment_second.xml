@@ -575,7 +575,7 @@
             <Button
                 android:id="@+id/but15"
                 android:layout_width="40dp"
-                android:text="@string/zero" />
+                android:text="@string/zero"/>
         </TableRow>
     </TableLayout>
 
@@ -586,6 +586,7 @@
         android:layout_marginStart="158dp"
         android:layout_marginEnd="158dp"
         android:text="@string/score_round"
+        android:onClick="getScores"
         app:layout_constraintBottom_toTopOf="@+id/button_second"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.521"

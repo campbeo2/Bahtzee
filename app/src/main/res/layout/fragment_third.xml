@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/round3_button"
+    android:id="@+id/show_scores"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ThirdFragment">
@@ -52,21 +52,21 @@
             android:gravity="center">
             <TextView
                 android:gravity="center"
-                android:id="@+id/one_score"
+                android:id="@+id/one_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/two_score"
+                android:id="@+id/two_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/three_score"
+                android:id="@+id/three_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
@@ -112,21 +112,21 @@
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/four_score"
+                android:id="@+id/four_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/five_score"
+                android:id="@+id/five_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/six_score"
+                android:id="@+id/six_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
@@ -160,21 +160,21 @@
             android:gravity="center">
             <TextView
                 android:gravity="center"
-                android:id="@+id/three_of_kind_score"
+                android:id="@+id/three_of_kind_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/four_of_kind_score"
+                android:id="@+id/four_of_kind_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/full_house_score"
+                android:id="@+id/full_house_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
@@ -205,21 +205,21 @@
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/sm_straight_score"
+                android:id="@+id/sm_straight_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/lrg_straight_score"
+                android:id="@+id/lrg_straight_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
-                android:id="@+id/chance_score"
+                android:id="@+id/chance_score_table"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
@@ -242,14 +242,28 @@
             android:gravity="center">
 
             <TextView
+                android:id="@+id/yahtzee_score_table"
                 android:gravity="center"
-                android:id="@+id/yahtzee_score"
                 android:text="@string/zero"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
         </TableRow>
     </TableLayout>
+
+    <Button
+        android:id="@+id/see_scores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="75dp"
+        android:text="Show Scores"
+        android:onClick="showScore"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/button_third"
