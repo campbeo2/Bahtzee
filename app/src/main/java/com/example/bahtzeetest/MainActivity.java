@@ -1,22 +1,13 @@
 package com.example.bahtzeetest;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -26,39 +17,48 @@ import com.example.bahtzeetest.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPreferences sharedPreferences;
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
-    private HashMap<String, Integer> map = new HashMap<String, Integer>(){{
-        put("one", 0); put("two", 0); put("three", 0);
-        put("four", 0); put("five", 0); put("six", 0);
-        put("three_of_kind", 0); put("four_of_kind", 0); put("full_house", 0);
-        put("sm_straight", 0); put("lrg_straight", 0); put("chance", 0);
-        put("yahtzee", 0); put("yahtzee_bonus", 0); put("upper_bonus", 0);
-        put("upper_total", 0); put("lower_total", 0); put("grand_total", 0);
-    }};
-    public static final String MyPREFERENCES = "MyPrefs" ;
+
+    public static final String DICE_SCORES = "diceScore";
+    public static final String DICE_ONE = "dice1";
+    public static final String DICE_TWO = "dice2";
+    public static final String DICE_THREE = "dice3";
+    public static final String DICE_FOUR = "dice4";
+    public static final String DICE_FIVE = "dice5";
+
+    public static final String SELECTED_SCORE = "selectedScore";
+    public static final String SCORE_ONE = "one";
+    public static final String SCORE_TWO = "two";
+    public static final String SCORE_THREE = "three";
+    public static final String SCORE_FOUR = "four";
+    public static final String SCORE_FIVE = "fice";
+    public static final String SCORE_SIX = "six";
+    public static final String SCORE_3OK = "3OK";
+    public static final String SCORE_4OK = "4OK";
+    public static final String SCORE_FULL_HOUSE = "fullHouse";
+    public static final String SCORE_YAHTZEE = "yahtzee";
+    public static final String SCORE_CHANCE = "chance";
+    public static final String SCORE_SM_STRT = "smStraight";
+    public static final String SCORE_LRG_STRT = "lrgStraight";
     private int round_number = 0;
-    private ArrayList<Integer> scores = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        editor.clear();
+        editor.commit();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
@@ -68,30 +68,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getScores(View view) {
-        sharedPreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Button d1 = (Button) findViewById(R.id.but11);
-        Button d2 = (Button) findViewById(R.id.but12);
-        Button d3 = (Button) findViewById(R.id.but13);
-        Button d4 = (Button) findViewById(R.id.but14);
-        Button d5 = (Button) findViewById(R.id.but15);
-        int dice1 = Integer.parseInt((String)d1.getText());
+        Button d1 = findViewById(R.id.but11);
+        Button d2 = findViewById(R.id.but12);
+        Button d3 = findViewById(R.id.but13);
+        Button d4 = findViewById(R.id.but14);
+        Button d5 = findViewById(R.id.but15);
+        int dice1 = Integer.parseInt((String) d1.getText());
         int dice2 = Integer.parseInt((String) d2.getText());
         int dice3 = Integer.parseInt((String) d3.getText());
         int dice4 = Integer.parseInt((String) d4.getText());
         int dice5 = Integer.parseInt((String) d5.getText());
 
-        TextView t1 = (TextView) findViewById(R.id.one_score);
-       // t1.setText(Integer.toString(dice1));
-        editor.putString("Dice 1", d1.getText().toString());
-
+        SharedPreferences sharedPreferences = getSharedPreferences(DICE_SCORES, MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
         editor.commit();
-        scores.add(dice1); scores.add(dice2); scores.add(dice3);
-        scores.add(dice4); scores.add(dice5);
 
-       // t1.setText(Integer.toString(scores.get(1)));
+        editor.putInt(DICE_ONE, dice1);
+        editor.putInt(DICE_TWO, dice2);
+        editor.putInt(DICE_THREE, dice3);
+        editor.putInt(DICE_FOUR, dice4);
+        editor.putInt(DICE_FIVE, dice5);
+        editor.commit();
     }
-
 
     @SuppressLint("SetTextI18n")
     public void rollDice(View v) {
@@ -101,16 +100,16 @@ public class MainActivity extends AppCompatActivity {
             int rand_number = rand.nextInt(6) + 1;
             rand_array[i] = rand_number;
         }
-        Button but1 = (Button) findViewById(R.id.but1);
-        if (but1.getText().equals("0")) {
+        Button but1 = findViewById(R.id.but1);
+        if (but1.getText().equals("")) {
             but1.setText(Integer.toString(rand_array[0]));
-            Button but2 = (Button) findViewById(R.id.but2);
+            Button but2 = findViewById(R.id.but2);
             but2.setText(Integer.toString(rand_array[1]));
-            Button but3 = (Button) findViewById(R.id.but3);
+            Button but3 = findViewById(R.id.but3);
             but3.setText(Integer.toString(rand_array[2]));
-            Button but4 = (Button) findViewById(R.id.but4);
+            Button but4 = findViewById(R.id.but4);
             but4.setText(Integer.toString(rand_array[3]));
-            Button but5 = (Button) findViewById(R.id.but5);
+            Button but5 = findViewById(R.id.but5);
             but5.setText(Integer.toString(rand_array[4]));
         }
     }
@@ -124,20 +123,20 @@ public class MainActivity extends AppCompatActivity {
             rand_array[i] = rand_number;
         }
 
-        Button but1 = (Button) findViewById(R.id.but6);
-        if (but1.getText().equals("0"))
+        Button but1 = findViewById(R.id.but6);
+        if (but1.getText().equals(""))
             but1.setText(Integer.toString(rand_array[0]));
-        Button but2 = (Button) findViewById(R.id.but7);
-        if (but2.getText().equals("0"))
+        Button but2 = findViewById(R.id.but7);
+        if (but2.getText().equals(""))
             but2.setText(Integer.toString(rand_array[1]));
-        Button but3 = (Button) findViewById(R.id.but8);
-        if (but3.getText().equals("0"))
+        Button but3 = findViewById(R.id.but8);
+        if (but3.getText().equals(""))
             but3.setText(Integer.toString(rand_array[2]));
-        Button but4 = (Button) findViewById(R.id.but9);
-        if (but4.getText().equals("0"))
+        Button but4 = findViewById(R.id.but9);
+        if (but4.getText().equals(""))
         but4.setText(Integer.toString(rand_array[3]));
-        Button but5 = (Button) findViewById(R.id.but10);
-        if (but5.getText().equals("0"))
+        Button but5 = findViewById(R.id.but10);
+        if (but5.getText().equals(""))
             but5.setText(Integer.toString(rand_array[4]));
         }
 
@@ -149,167 +148,485 @@ public class MainActivity extends AppCompatActivity {
             int rand_number = rand.nextInt(6) + 1;
             rand_array[i] = rand_number;
         }
-        Button but1 = (Button) findViewById(R.id.but11);
+        Button but1 = findViewById(R.id.but11);
         if (but1.getText().equals(""))
             but1.setText(Integer.toString(rand_array[0]));
-        Button but2 = (Button) findViewById(R.id.but12);
-        if (but2.getText().equals("0"))
+        Button but2 = findViewById(R.id.but12);
+        if (but2.getText().equals(""))
             but2.setText(Integer.toString(rand_array[1]));
-        Button but3 = (Button) findViewById(R.id.but13);
-        if (but3.getText().equals("0"))
+        Button but3 = findViewById(R.id.but13);
+        if (but3.getText().equals(""))
             but3.setText(Integer.toString(rand_array[2]));
-        Button but4 = (Button) findViewById(R.id.but14);
-        if (but4.getText().equals("0"))
+        Button but4 = findViewById(R.id.but14);
+        if (but4.getText().equals(""))
             but4.setText(Integer.toString(rand_array[3]));
-        Button but5 = (Button) findViewById(R.id.but15);
-        if (but5.getText().equals("0"))
+        Button but5 = findViewById(R.id.but15);
+        if (but5.getText().equals(""))
             but5.setText(Integer.toString(rand_array[4]));
     }
 
     public void lockDiceOne (View v) {
-        Button but = (Button) findViewById(R.id.but1);
+        Button but = findViewById(R.id.but1);
         String num = (String) but.getText();
-        Button round2_but = (Button) findViewById(R.id.but6);
+        Button round2_but = findViewById(R.id.but6);
         round2_but.setText(num);
     }
 
     public void lockDiceTwo (View v) {
-        Button but = (Button) findViewById(R.id.but2);
+        Button but = findViewById(R.id.but2);
         String num = (String) but.getText();
-        Button round2_but = (Button) findViewById(R.id.but7);
+        Button round2_but = findViewById(R.id.but7);
         round2_but.setText(num);
     }
 
     public void lockDiceThree (View v) {
-        Button but = (Button) findViewById(R.id.but3);
+        Button but = findViewById(R.id.but3);
         String num = (String) but.getText();
-        Button round2_but = (Button) findViewById(R.id.but8);
+        Button round2_but = findViewById(R.id.but8);
         round2_but.setText(num);
     }
 
     public void lockDiceFour (View v) {
-        Button but = (Button) findViewById(R.id.but4);
+        Button but = findViewById(R.id.but4);
         String num = (String) but.getText();
-        Button round2_but = (Button) findViewById(R.id.but9);
+        Button round2_but = findViewById(R.id.but9);
         round2_but.setText(num);
     }
 
     public void lockDiceFive (View v) {
-        Button but = (Button) findViewById(R.id.but5);
+        Button but = findViewById(R.id.but5);
         String num = (String) but.getText();
-        Button round2_but = (Button) findViewById(R.id.but10);
+        Button round2_but = findViewById(R.id.but10);
         round2_but.setText(num);
     }
 
     public void lockDiceOneTwo (View v) {
-        Button round2_but = (Button) findViewById(R.id.but6);
+        Button round2_but = findViewById(R.id.but6);
         String num = (String) round2_but.getText();
         round2_but.setText(num);
-        Button round3_but = (Button) findViewById(R.id.but11);
+        Button round3_but = findViewById(R.id.but11);
         round3_but.setText(num);
     }
     public void lockDiceTwoTwo (View v) {
-        Button round2_but = (Button) findViewById(R.id.but7);
+        Button round2_but = findViewById(R.id.but7);
         String num = (String) round2_but.getText();
         round2_but.setText(num);
-        Button round3_but = (Button) findViewById(R.id.but12);
+        Button round3_but = findViewById(R.id.but12);
         round3_but.setText(num);
     }
 
     public void lockDiceThreeTwo (View v) {
-        Button round2_but = (Button) findViewById(R.id.but8);
+        Button round2_but = findViewById(R.id.but8);
         String num = (String) round2_but.getText();
         round2_but.setText(num);
-        Button round3_but = (Button) findViewById(R.id.but13);
+        Button round3_but = findViewById(R.id.but13);
         round3_but.setText(num);
     }
 
     public void lockDiceFourTwo (View v) {
-        Button round2_but = (Button) findViewById(R.id.but9);
+        Button round2_but = findViewById(R.id.but9);
         String num = (String) round2_but.getText();
         round2_but.setText(num);
-        Button round3_but = (Button) findViewById(R.id.but14);
+        Button round3_but = findViewById(R.id.but14);
         round3_but.setText(num);
     }
 
     public void lockDiceFiveTwo (View v) {
-        Button round2_but = (Button) findViewById(R.id.but10);
+        Button round2_but = findViewById(R.id.but10);
         String num = (String) round2_but.getText();
         round2_but.setText(num);
-        Button round3_but = (Button) findViewById(R.id.but15);
+        Button round3_but = findViewById(R.id.but15);
         round3_but.setText(num);
     }
 
     public void allocateTable (View v) {
-        TextView one_score = (TextView) findViewById(R.id.one_score);
-        one_score.setText(Integer.toString(map.get("one")));
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        int score_one = setScore.getInt(SCORE_ONE, 0);
+        int score_two = setScore.getInt(SCORE_TWO, 0);
+        int score_three = setScore.getInt(SCORE_THREE, 0);
+        int score_four = setScore.getInt(SCORE_FOUR, 0);
+        int score_five = setScore.getInt(SCORE_FIVE, 0);
+        int score_six = setScore.getInt(SCORE_SIX, 0);
+        int score_3OK = setScore.getInt(SCORE_3OK, 0);
+        int score_4OK = setScore.getInt(SCORE_4OK, 0);
+        int score_full_house = setScore.getInt(SCORE_FULL_HOUSE, 0);
+        int score_sm_straight = setScore.getInt(SCORE_SM_STRT, 0);
+        int score_lrg_straight = setScore.getInt(SCORE_LRG_STRT, 0);
+        int score_yahtzee = setScore.getInt(SCORE_YAHTZEE, 0);
+        int score_chance = setScore.getInt(SCORE_CHANCE, 0);
+        int score_upper = score_one + score_two + score_three + score_four + score_five + score_six;
+        int score_lower = score_3OK + score_4OK + score_sm_straight + score_lrg_straight +
+                score_chance + score_chance + score_full_house;
+        int score_total = score_upper + score_lower;
+        TextView one_score = findViewById(R.id.one_score);
+        one_score.setText(Integer.toString(score_one));
 
-        TextView two_score = (TextView) findViewById(R.id.two_score);
-        two_score.setText(Integer.toString(map.get("two")));
+        TextView two_score = findViewById(R.id.two_score);
+        two_score.setText(Integer.toString(score_two));
 
-        TextView three_score = (TextView) findViewById(R.id.three_score);
-        three_score.setText(Integer.toString(map.get("three")));
+        TextView three_score = findViewById(R.id.three_score);
+        three_score.setText(Integer.toString(score_three));
 
-        TextView four_score = (TextView) findViewById(R.id.four_score);
-        four_score.setText(Integer.toString(map.get("four")));
+        TextView four_score = findViewById(R.id.four_score);
+        four_score.setText(Integer.toString(score_four));
 
-        TextView five_score = (TextView) findViewById(R.id.five_score);
-        five_score.setText(Integer.toString(map.get("five")));
+        TextView five_score = findViewById(R.id.five_score);
+        five_score.setText(Integer.toString(score_five));
 
-        TextView six_score = (TextView) findViewById(R.id.six_score);
-        six_score.setText(Integer.toString(map.get("six")));
+        TextView six_score = findViewById(R.id.six_score);
+        six_score.setText(Integer.toString(score_six));
 
-        TextView three_of_kind_score = (TextView) findViewById(R.id.three_of_kind_score);
-        three_of_kind_score.setText(Integer.toString(map.get("three_of_kind")));
+        TextView three_of_kind_score = findViewById(R.id.three_of_kind_score);
+        three_of_kind_score.setText(Integer.toString(score_3OK));
 
-        TextView four_of_kind_score = (TextView) findViewById(R.id.four_of_kind_score);
-        four_of_kind_score.setText(Integer.toString(map.get("four_of_kind")));
+        TextView four_of_kind_score = findViewById(R.id.four_of_kind_score);
+        four_of_kind_score.setText(Integer.toString(score_4OK));
 
-        TextView full_house_score = (TextView) findViewById(R.id.full_house_score);
-        full_house_score.setText(Integer.toString(map.get("full_house")));
+        TextView full_house_score = findViewById(R.id.full_house_score);
+        full_house_score.setText(Integer.toString(score_full_house));
 
-        TextView sm_straight_score = (TextView) findViewById(R.id.sm_straight_score);
-        sm_straight_score.setText(Integer.toString(map.get("sm_straight")));
+        TextView sm_straight_score = findViewById(R.id.sm_straight_score);
+        sm_straight_score.setText(Integer.toString(score_sm_straight));
 
-        TextView lrg_straight_score = (TextView) findViewById(R.id.lrg_straight_score);
-        lrg_straight_score.setText(Integer.toString(map.get("lrg_straight")));
+        TextView lrg_straight_score = findViewById(R.id.lrg_straight_score);
+        lrg_straight_score.setText(Integer.toString(score_lrg_straight));
 
-        TextView chance_score = (TextView) findViewById(R.id.chance_score);
-        chance_score.setText(Integer.toString(map.get("chance")));
+        TextView chance_score = findViewById(R.id.chance_score);
+        chance_score.setText(Integer.toString(score_chance));
 
-        TextView yahtzee_score = (TextView) findViewById(R.id.yahtzee_score);
-        yahtzee_score.setText(Integer.toString(map.get("yahtzee")));
+        TextView yahtzee_score = findViewById(R.id.yahtzee_score);
+        yahtzee_score.setText(Integer.toString(score_yahtzee));
 
-        TextView yahtzee_bonus_score = (TextView) findViewById(R.id.yahtzee_bonus_score);
-        yahtzee_bonus_score.setText(Integer.toString(map.get("yahtzee_bonus")));
+        TextView yahtzee_bonus_score = findViewById(R.id.yahtzee_bonus_score);
+        yahtzee_bonus_score.setText("");
 
-        TextView up_bonus_score = (TextView) findViewById(R.id.up_bonus_score);
-        up_bonus_score.setText(Integer.toString(map.get("upper_bonus")));
+        if (score_upper > 62) {
+            TextView up_bonus_score = findViewById(R.id.up_bonus_score);
+            up_bonus_score.setText(Integer.toString(35));
 
-        TextView up_score = (TextView) findViewById(R.id.up_score);
-        up_score.setText(Integer.toString(map.get("upper_total")));
+            TextView total_score = findViewById(R.id.total_score);
+            total_score.setText(Integer.toString(score_total + 35));
+        } else {
+            TextView total_score = findViewById(R.id.total_score);
+            total_score.setText(Integer.toString(score_total));
+        }
 
-        TextView low_score = (TextView) findViewById(R.id.low_score);
-        low_score.setText(Integer.toString(map.get("lower_total")));
+        TextView up_score = findViewById(R.id.up_score);
+        up_score.setText(Integer.toString(score_upper));
 
-        TextView total_score = (TextView) findViewById(R.id.total_score);
-        total_score.setText(Integer.toString(map.get("grand_total")));
+        TextView low_score = findViewById(R.id.low_score);
+        low_score.setText(Integer.toString(score_lower));
     }
 
     public void showScore (View v) {
+        SharedPreferences sharedPreferences = this.getSharedPreferences(DICE_SCORES, MODE_PRIVATE);
+        int dice1 = sharedPreferences.getInt(DICE_ONE, 0);
+        int dice2 = sharedPreferences.getInt(DICE_TWO, 0);
+        int dice3 = sharedPreferences.getInt(DICE_THREE, 0);
+        int dice4 = sharedPreferences.getInt(DICE_FOUR, 0);
+        int dice5 = sharedPreferences.getInt(DICE_FIVE, 0);
+        int[] arr = {dice1, dice2, dice3, dice4, dice5};
+        oneScore(arr); twoScore(arr); threeScore(arr);
+        fourScore(arr); fiveScore(arr); sixScore(arr);
+        threeOfKindScore(arr); fourOfKindScore(arr); fullHouseScore(arr);
+        smStrtScore(arr); lrgStrtScore(arr); chanceScore(arr); yahtzeeScore(arr);
+    }
+
+    public void oneScore(int[] arr) {
         int round_score = 0;
-
-
-        for (int i = 0; i < scores.size(); i++) {
-            if (scores.get(i) == 1) {
+        for (int j : arr) {
+            if (j == 1) {
                 round_score++;
             }
         }
-        TextView one_score = (TextView) findViewById(R.id.one_score_table);
-       // one_score.setText(Integer.toString(round_score));
-        one_score.setText(Integer.toString(scores.get(1)));
+        TextView one_score = findViewById(R.id.one_score_table);
+        one_score.setText(Integer.toString(round_score));
+    }
+
+    public void twoScore(int[] arr) {
+        int round_score = 0;
+        for (int j : arr) {
+            if (j == 2) {
+                round_score+=2;
+            }
+        }
+        TextView score = findViewById(R.id.two_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void threeScore(int[] arr) {
+        int round_score = 0;
+        for (int j : arr) {
+            if (j == 3) {
+                round_score+=3;
+            }
+        }
+        TextView score = findViewById(R.id.three_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void fourScore(int[] arr) {
+        int round_score = 0;
+        for (int j : arr) {
+            if (j == 4) {
+                round_score+=4;
+            }
+        }
+        TextView score = findViewById(R.id.four_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void fiveScore(int[] arr) {
+        int round_score = 0;
+        for (int j : arr) {
+            if (j == 5) {
+                round_score+=5;
+            }
+        }
+        TextView score = findViewById(R.id.five_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void sixScore(int[] arr) {
+        int round_score = 0;
+        for (int j : arr) {
+            if (j == 6) {
+                round_score+=6;
+            }
+        }
+        TextView score = findViewById(R.id.six_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void threeOfKindScore(int[] arr) {
+        int round_score = 0;
+        int repeat1 = 0; int repeat2 = 0; int repeat3 = 0;
+        int repeat4 = 0; int repeat5 = 0; int repeat6 = 0;
+        for (int j : arr) {
+            if (j == 1) {
+                repeat1++;
+            } else if (j == 2) {
+                repeat2++;
+            } else if (j == 3) {
+                repeat3++;
+            } else if (j == 4) {
+                repeat4++;
+            } else if (j == 5) {
+                repeat5++;
+            } else if (j == 6) {
+                repeat6++;
+            }
+        }
+        if (repeat1 >= 3 || repeat2 >= 3 || repeat3 >= 3 || repeat4 >= 3 ||
+                repeat5 >= 3 || repeat6 >= 3 ) {
+            round_score = (repeat1) + (repeat2 * 2) + (repeat3 * 3) + (repeat4 * 4)
+                    + (repeat5 * 5) + (repeat6 * 6);
+        }
+        TextView score = findViewById(R.id.three_of_kind_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void fourOfKindScore(int[] arr) {
+        int round_score = 0;
+        int repeat1 = 0; int repeat2 = 0; int repeat3 = 0;
+        int repeat4 = 0; int repeat5 = 0; int repeat6 = 0;
+        for (int j : arr) {
+            if (j == 1) {
+                repeat1++;
+            } else if (j == 2) {
+                repeat2++;
+            } else if (j == 3) {
+                repeat3++;
+            } else if (j == 4) {
+                repeat4++;
+            } else if (j == 5) {
+                repeat5++;
+            } else if (j == 6) {
+                repeat6++;
+            }
+        }
+        if (repeat1 >= 4 || repeat2 >= 4 || repeat3 >= 4 || repeat4 >= 4 ||
+                repeat5 >= 4 || repeat6 >= 4 ) {
+            round_score = (repeat1) + (repeat2 * 2) + (repeat3 * 3) + (repeat4 * 4)
+                    + (repeat5 * 5) + (repeat6 * 6);
+        }
+        TextView score = findViewById(R.id.four_of_kind_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void fullHouseScore(int[] arr) {
+        int round_score = 0;
+        int repeat1 = 0; int repeat2 = 0; int repeat3 = 0;
+        int repeat4 = 0; int repeat5 = 0; int repeat6 = 0;
+        for (int j : arr) {
+            if (j == 1) {
+                repeat1++;
+            } else if (j == 2) {
+                repeat2++;
+            } else if (j == 3) {
+                repeat3++;
+            } else if (j == 4) {
+                repeat4++;
+            } else if (j == 5) {
+                repeat5++;
+            } else if (j == 6) {
+                repeat6++;
+            }
+        }
+        if ((repeat1 == 3 || repeat2 == 3 || repeat3 == 3 || repeat4 == 3 ||
+                repeat5 == 3 || repeat6 == 3) && (repeat1 == 2 || repeat2 == 2 ||
+                repeat3 == 2 || repeat4 == 2 || repeat5 == 2 || repeat6 == 2)) {
+            round_score = 25;
+        }
+        TextView score = findViewById(R.id.full_house_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void smStrtScore(int[] arr) {
+        int round_score = 0;
+        Arrays.sort(arr);
+        if ((arr[0] == 1 && arr[1] == 2 && arr[2] == 3 && arr[3] == 4) ||
+                (arr[0] == 2 && arr[1] == 3 && arr[2] == 4 && arr[3] == 5) ||
+                (arr[0] == 3 && arr[1] == 4 && arr[2] == 5 && arr[3] == 6)) {
+            round_score = 30;
+        }
+        TextView score = findViewById(R.id.sm_straight_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void lrgStrtScore(int[] arr) {
+        int round_score = 0;
+        Arrays.sort(arr);
+        if ((arr[0] == 1 && arr[1] == 2 && arr[2] == 3 && arr[3] == 4 && arr[4] == 5) ||
+                (arr[0] == 2 && arr[1] == 3 && arr[2] == 4 && arr[3] == 5 && arr[4] == 6)) {
+            round_score = 40;
+        }
+        TextView score = findViewById(R.id.lrg_straight_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void chanceScore(int[] arr) {
+        int round_score = 0;
+        for (int j : arr) {
+            round_score += j;
+        }
+        TextView score = findViewById(R.id.chance_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void yahtzeeScore(int[] arr) {
+        int round_score = 0;
+        if (arr[0] == arr[1] && arr[0] == arr[2] && arr[0] == arr[3] && arr[0]== arr[4]) {
+            round_score = 50;
+        }
+        TextView score = findViewById(R.id.yahtzee_score_table);
+        score.setText(Integer.toString(round_score));
+    }
+
+    public void setScoreOne (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.one_score_table);
+        editor.putInt(SCORE_ONE, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setScoreTwo (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.two_score_table);
+        editor.putInt(SCORE_TWO, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setScoreThree (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.three_score_table);
+        editor.putInt(SCORE_THREE, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setScoreFour (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.four_score_table);
+        editor.putInt(SCORE_FOUR, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setScoreFive (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.five_score_table);
+        editor.putInt(SCORE_FIVE, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setScoreSix (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.six_score_table);
+        editor.putInt(SCORE_SIX, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setThreeOfKind (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.three_of_kind_score_table);
+        editor.putInt(SCORE_3OK, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setFourOfKind (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.four_of_kind_score_table);
+        editor.putInt(SCORE_4OK, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setFullHouse (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.full_house_score_table);
+        editor.putInt(SCORE_FULL_HOUSE, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
 
 
+    public void setScoreSmStrt (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.sm_straight_score_table);
+        editor.putInt(SCORE_SM_STRT, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setScoreLrgStrt (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.lrg_straight_score_table);
+        editor.putInt(SCORE_LRG_STRT, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setScoreChance (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.chance_score_table);
+        editor.putInt(SCORE_CHANCE, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
+    }
+
+    public void setScoreYahtzee (View v) {
+        SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor editor = setScore.edit();
+        TextView t1 = findViewById(R.id.yahtzee_score_table);
+        editor.putInt(SCORE_YAHTZEE, Integer.parseInt(t1.getText().toString()));
+        editor.commit();
     }
 
     @Override
@@ -340,17 +657,4 @@ public class MainActivity extends AppCompatActivity {
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
     }
-}
-
-class DiceScores extends Application {
-    private static ArrayList<Integer> scores = new ArrayList<>();
-
-    public void setDiceScores (ArrayList<Integer> arr) {
-        scores = arr;
-    }
-
-    public ArrayList<Integer> getDiceScores() {
-        return scores;
-    }
-
 }

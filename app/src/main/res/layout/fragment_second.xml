@@ -11,10 +11,12 @@
         android:id="@+id/button_second"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:onClick="getScores"
         android:text="@string/previous"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.065"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TableLayout
@@ -81,6 +83,7 @@
                 android:text="@string/six"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
+
         </TableRow>
 
         <TableRow
@@ -91,42 +94,42 @@
             <TextView
                 android:gravity="center"
                 android:id="@+id/one_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/two_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/three_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/four_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/five_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/six_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
         </TableRow>
@@ -175,42 +178,42 @@
             <TextView
                 android:gravity="center"
                 android:id="@+id/three_of_kind_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/four_of_kind_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/full_house_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/sm_straight_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/lrg_straight_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/chance_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
         </TableRow>
@@ -258,42 +261,42 @@
             <TextView
                 android:gravity="center"
                 android:id="@+id/yahtzee_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/yahtzee_bonus_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/up_bonus_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/up_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/low_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
             <TextView
                 android:gravity="center"
                 android:id="@+id/total_score"
-                android:text="@string/zero"
+                android:text="@string/zeroScore"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
         </TableRow>
@@ -361,35 +364,30 @@
                 android:id="@+id/but1"
                 android:onClick="lockDiceOne"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="ButtonStyle,UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/but2"
                 android:onClick="lockDiceTwo"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/but3"
                 android:onClick="lockDiceThree"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/but4"
                 android:onClick="lockDiceFour"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/but5"
                 android:onClick="lockDiceFive"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="UsingOnClickInXml" />
         </TableRow>
     </TableLayout>
@@ -460,35 +458,30 @@
                 android:id="@+id/but6"
                 android:onClick="lockDiceOneTwo"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/but7"
                 android:onClick="lockDiceTwoTwo"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/but8"
                 android:onClick="lockDiceThreeTwo"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/but9"
                 android:onClick="lockDiceFourTwo"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="UsingOnClickInXml" />
 
             <Button
                 android:id="@+id/but10"
                 android:onClick="lockDiceFiveTwo"
                 android:layout_width="40dp"
-                android:text="@string/zero"
                 tools:ignore="UsingOnClickInXml" />
         </TableRow>
     </TableLayout>
@@ -555,28 +548,23 @@
             <Button
                 android:id="@+id/but11"
                 android:layout_width="40dp"/>
-<!--                android:text="@string/zero" -->
-                />
+
 
             <Button
                 android:id="@+id/but12"
-                android:layout_width="40dp"
-                android:text="@string/zero" />
+                android:layout_width="40dp" />
 
             <Button
                 android:id="@+id/but13"
-                android:layout_width="40dp"
-                android:text="@string/zero" />
+                android:layout_width="40dp" />
 
             <Button
                 android:id="@+id/but14"
-                android:layout_width="40dp"
-                android:text="@string/zero" />
+                android:layout_width="40dp" />
 
             <Button
                 android:id="@+id/but15"
-                android:layout_width="40dp"
-                android:text="@string/zero"/>
+                android:layout_width="40dp" />
         </TableRow>
     </TableLayout>
 
@@ -584,14 +572,26 @@
         android:id="@+id/score_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="158dp"
-        android:layout_marginEnd="158dp"
+        android:layout_marginStart="135dp"
+
+        android:layout_marginEnd="135dp"
+        android:layout_marginBottom="16dp"
         android:text="@string/score_round"
-        android:onClick="getScores"
-        app:layout_constraintBottom_toTopOf="@+id/button_second"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.521"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="UsingOnClickInXml" />
+        app:layout_constraintTop_toBottomOf="@+id/button_second"
+        tools:ignore="MissingConstraints,UsingOnClickInXml" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="64dp"
+        android:text="Allocate Table"
+        android:onClick="allocateTable"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
