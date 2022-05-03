@@ -6,7 +6,7 @@
     <string name="second_fragment_label">Play Game</string>
     <string name="third_fragment_label">Score Table</string>
     <string name="startGame">Start Game</string>
-    <string name="previous">Restart</string>
+    <string name="previous">Allocate Score</string>
 
     <string name="hello_first_fragment">Game rules and details</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
@@ -40,6 +40,7 @@
     <string name="d5">Dice 5</string>
 
     <string name="zero">0</string>
+    <string name="zeroScore">0.</string>
 
     <string name="roll1">Roll Round 1</string>
     <string name="roll2">Roll Round 2</string>

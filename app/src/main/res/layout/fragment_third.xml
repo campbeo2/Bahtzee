@@ -24,6 +24,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/one"
+                android:onClick="setScoreOne"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
@@ -33,6 +34,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/two"
+                android:onClick="setScoreTwo"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
@@ -42,6 +44,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/three"
+                android:onClick="setScoreThree"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
         </TableRow>
@@ -82,6 +85,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/four"
+                android:onClick="setScoreFour"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
@@ -91,6 +95,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/five"
+                android:onClick="setScoreFive"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
@@ -100,6 +105,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/six"
+                android:onClick="setScoreSix"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
         </TableRow>
@@ -140,17 +146,19 @@
             <Button
                 android:gravity="center"
                 android:text="@string/tok"
-
+                android:onClick="setThreeOfKind"
                 android:textColor="#000" />
 
             <Button
                 android:gravity="center"
                 android:text="@string/fok"
+                android:onClick="setFourOfKind"
                 android:textColor="#000" />
 
             <Button
                 android:gravity="center"
                 android:text="@string/full_house"
+                android:onClick="setFullHouse"
                 android:textColor="#000" />
         </TableRow>
         <TableRow
@@ -185,16 +193,19 @@
             <Button
                 android:gravity="center"
                 android:text="@string/sm_straight"
+                android:onClick="setScoreSmStrt"
                 android:textColor="#000" />
 
             <Button
                 android:gravity="center"
                 android:text="@string/lrg_straight"
+                android:onClick="setScoreLrgStrt"
                 android:textColor="#000" />
 
             <Button
                 android:gravity="center"
                 android:text="@string/chance"
+                android:onClick="setScoreChance"
                 android:textColor="#000" />
         </TableRow>
 
@@ -233,6 +244,7 @@
             <Button
                 android:gravity="center"
                 android:text="@string/yahtzee"
+                android:onClick="setScoreYahtzee"
                 android:textColor="#000" />
 
         </TableRow>
