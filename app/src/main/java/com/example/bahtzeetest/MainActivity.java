@@ -21,7 +21,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SCORE_TWO = "two";
     public static final String SCORE_THREE = "three";
     public static final String SCORE_FOUR = "four";
-    public static final String SCORE_FIVE = "fice";
+    public static final String SCORE_FIVE = "five";
     public static final String SCORE_SIX = "six";
     public static final String SCORE_3OK = "3OK";
     public static final String SCORE_4OK = "4OK";
@@ -50,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
     public static final String SCORE_CHANCE = "chance";
     public static final String SCORE_SM_STRT = "smStraight";
     public static final String SCORE_LRG_STRT = "lrgStraight";
-    private int round_number = 0;
+    public static final String SCORE_YAHTZEE_BONUS = "yahtzeeBonus";
+    public static final String ROUND_NUMBER = "roundNumber";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +78,15 @@ public class MainActivity extends AppCompatActivity {
         int dice3 = Integer.parseInt((String) d3.getText());
         int dice4 = Integer.parseInt((String) d4.getText());
         int dice5 = Integer.parseInt((String) d5.getText());
+        SharedPreferences diceScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor edit = diceScore.edit();
+        int yahtzee = diceScore.getInt(SCORE_YAHTZEE, 0);
+        if ((dice1 == dice2 && dice1 == dice3 && dice1 == dice4 && dice1 == dice5)
+                && yahtzee == 50) {
+            int yahtzeeBonus = diceScore.getInt(SCORE_YAHTZEE_BONUS, 0);
+            edit.putInt(SCORE_YAHTZEE_BONUS, 100 + yahtzeeBonus);
+            edit.commit();
+        }
 
         SharedPreferences sharedPreferences = getSharedPreferences(DICE_SCORES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -101,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
             rand_array[i] = rand_number;
         }
         Button but1 = findViewById(R.id.but1);
-        if (but1.getText().equals("")) {
+        if (but1.getText().equals("0")) {
             but1.setText(Integer.toString(rand_array[0]));
             Button but2 = findViewById(R.id.but2);
             but2.setText(Integer.toString(rand_array[1]));
@@ -124,19 +133,19 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Button but1 = findViewById(R.id.but6);
-        if (but1.getText().equals(""))
+        if (but1.getText().equals("0"))
             but1.setText(Integer.toString(rand_array[0]));
         Button but2 = findViewById(R.id.but7);
-        if (but2.getText().equals(""))
+        if (but2.getText().equals("0"))
             but2.setText(Integer.toString(rand_array[1]));
         Button but3 = findViewById(R.id.but8);
-        if (but3.getText().equals(""))
+        if (but3.getText().equals("0"))
             but3.setText(Integer.toString(rand_array[2]));
         Button but4 = findViewById(R.id.but9);
-        if (but4.getText().equals(""))
+        if (but4.getText().equals("0"))
         but4.setText(Integer.toString(rand_array[3]));
         Button but5 = findViewById(R.id.but10);
-        if (but5.getText().equals(""))
+        if (but5.getText().equals("0"))
             but5.setText(Integer.toString(rand_array[4]));
         }
 
@@ -149,19 +158,19 @@ public class MainActivity extends AppCompatActivity {
             rand_array[i] = rand_number;
         }
         Button but1 = findViewById(R.id.but11);
-        if (but1.getText().equals(""))
+        if (but1.getText().equals("0"))
             but1.setText(Integer.toString(rand_array[0]));
         Button but2 = findViewById(R.id.but12);
-        if (but2.getText().equals(""))
+        if (but2.getText().equals("0"))
             but2.setText(Integer.toString(rand_array[1]));
         Button but3 = findViewById(R.id.but13);
-        if (but3.getText().equals(""))
+        if (but3.getText().equals("0"))
             but3.setText(Integer.toString(rand_array[2]));
         Button but4 = findViewById(R.id.but14);
-        if (but4.getText().equals(""))
+        if (but4.getText().equals("0"))
             but4.setText(Integer.toString(rand_array[3]));
         Button but5 = findViewById(R.id.but15);
-        if (but5.getText().equals(""))
+        if (but5.getText().equals("0"))
             but5.setText(Integer.toString(rand_array[4]));
     }
 
@@ -207,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
         Button round3_but = findViewById(R.id.but11);
         round3_but.setText(num);
     }
+
     public void lockDiceTwoTwo (View v) {
         Button round2_but = findViewById(R.id.but7);
         String num = (String) round2_but.getText();
@@ -241,7 +251,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void allocateTable (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
-        SharedPreferences.Editor editor = setScore.edit();
         int score_one = setScore.getInt(SCORE_ONE, 0);
         int score_two = setScore.getInt(SCORE_TWO, 0);
         int score_three = setScore.getInt(SCORE_THREE, 0);
@@ -254,10 +263,11 @@ public class MainActivity extends AppCompatActivity {
         int score_sm_straight = setScore.getInt(SCORE_SM_STRT, 0);
         int score_lrg_straight = setScore.getInt(SCORE_LRG_STRT, 0);
         int score_yahtzee = setScore.getInt(SCORE_YAHTZEE, 0);
+        int score_yahtzee_bonus = setScore.getInt(SCORE_YAHTZEE_BONUS, 0);
         int score_chance = setScore.getInt(SCORE_CHANCE, 0);
         int score_upper = score_one + score_two + score_three + score_four + score_five + score_six;
         int score_lower = score_3OK + score_4OK + score_sm_straight + score_lrg_straight +
-                score_chance + score_chance + score_full_house;
+                score_chance + score_yahtzee + score_yahtzee_bonus + score_full_house;
         int score_total = score_upper + score_lower;
         TextView one_score = findViewById(R.id.one_score);
         one_score.setText(Integer.toString(score_one));
@@ -299,7 +309,7 @@ public class MainActivity extends AppCompatActivity {
         yahtzee_score.setText(Integer.toString(score_yahtzee));
 
         TextView yahtzee_bonus_score = findViewById(R.id.yahtzee_bonus_score);
-        yahtzee_bonus_score.setText("");
+        yahtzee_bonus_score.setText(Integer.toString(score_yahtzee_bonus));
 
         if (score_upper > 62) {
             TextView up_bonus_score = findViewById(R.id.up_bonus_score);
@@ -327,10 +337,48 @@ public class MainActivity extends AppCompatActivity {
         int dice4 = sharedPreferences.getInt(DICE_FOUR, 0);
         int dice5 = sharedPreferences.getInt(DICE_FIVE, 0);
         int[] arr = {dice1, dice2, dice3, dice4, dice5};
-        oneScore(arr); twoScore(arr); threeScore(arr);
-        fourScore(arr); fiveScore(arr); sixScore(arr);
-        threeOfKindScore(arr); fourOfKindScore(arr); fullHouseScore(arr);
-        smStrtScore(arr); lrgStrtScore(arr); chanceScore(arr); yahtzeeScore(arr);
+
+        SharedPreferences selectedScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        int scoreOne = selectedScore.getInt(SCORE_ONE, 0);
+        int scoreTwo = selectedScore.getInt(SCORE_TWO, 0);
+        int scoreThree = selectedScore.getInt(SCORE_THREE, 0);
+        int scoreFour = selectedScore.getInt(SCORE_FOUR, 0);
+        int scoreFive = selectedScore.getInt(SCORE_FIVE, 0);
+        int scoreSix = selectedScore.getInt(SCORE_SIX, 0);
+        int score3ok = selectedScore.getInt(SCORE_3OK, 0);
+        int score4ok = selectedScore.getInt(SCORE_4OK, 0);
+        int scoreFullHouse = selectedScore.getInt(SCORE_FULL_HOUSE, 0);
+        int scoreSmStrt = selectedScore.getInt(SCORE_SM_STRT, 0);
+        int scoreLrgStrt = selectedScore.getInt(SCORE_LRG_STRT, 0);
+        int scoreChance = selectedScore.getInt(SCORE_CHANCE, 0);
+        int scoreYahtzee = selectedScore.getInt(SCORE_YAHTZEE, 0);
+
+        if (scoreOne == 0)
+            oneScore(arr);
+        if (scoreTwo == 0)
+            twoScore(arr);
+        if (scoreThree == 0)
+            threeScore(arr);
+        if (scoreFour == 0)
+            fourScore(arr);
+        if (scoreFive == 0)
+            fiveScore(arr);
+        if (scoreSix == 0)
+            sixScore(arr);
+        if (score3ok == 0)
+            threeOfKindScore(arr);
+        if (score4ok == 0)
+            fourOfKindScore(arr);
+        if (scoreFullHouse == 0)
+            fullHouseScore(arr);
+        if (scoreSmStrt == 0)
+            smStrtScore(arr);
+        if (scoreLrgStrt == 0)
+            lrgStrtScore(arr);
+        if (scoreChance == 0)
+            chanceScore(arr);
+        if (scoreYahtzee == 0 )
+            yahtzeeScore(arr);
     }
 
     public void oneScore(int[] arr) {
@@ -527,106 +575,170 @@ public class MainActivity extends AppCompatActivity {
     public void setScoreOne (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.one_score_table);
-        editor.putInt(SCORE_ONE, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int scoreOne = setScore.getInt(SCORE_ONE, 0);
+        if (scoreOne == 0) {
+            TextView t1 = findViewById(R.id.one_score_table);
+            editor.putInt(SCORE_ONE, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setScoreTwo (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.two_score_table);
-        editor.putInt(SCORE_TWO, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_TWO, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.two_score_table);
+            editor.putInt(SCORE_TWO, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setScoreThree (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.three_score_table);
-        editor.putInt(SCORE_THREE, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_THREE, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.three_score_table);
+            editor.putInt(SCORE_THREE, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setScoreFour (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.four_score_table);
-        editor.putInt(SCORE_FOUR, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_FOUR, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.four_score_table);
+            editor.putInt(SCORE_FOUR, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setScoreFive (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.five_score_table);
-        editor.putInt(SCORE_FIVE, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_FIVE, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.five_score_table);
+            editor.putInt(SCORE_FIVE, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setScoreSix (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.six_score_table);
-        editor.putInt(SCORE_SIX, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_SIX, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.six_score_table);
+            editor.putInt(SCORE_SIX, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setThreeOfKind (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.three_of_kind_score_table);
-        editor.putInt(SCORE_3OK, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_3OK, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.three_of_kind_score_table);
+            editor.putInt(SCORE_3OK, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setFourOfKind (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.four_of_kind_score_table);
-        editor.putInt(SCORE_4OK, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_4OK, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.four_of_kind_score_table);
+            editor.putInt(SCORE_4OK, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setFullHouse (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.full_house_score_table);
-        editor.putInt(SCORE_FULL_HOUSE, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_FULL_HOUSE, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.full_house_score_table);
+            editor.putInt(SCORE_FULL_HOUSE, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
-
 
     public void setScoreSmStrt (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.sm_straight_score_table);
-        editor.putInt(SCORE_SM_STRT, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_SM_STRT, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.sm_straight_score_table);
+            editor.putInt(SCORE_SM_STRT, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setScoreLrgStrt (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.lrg_straight_score_table);
-        editor.putInt(SCORE_LRG_STRT, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_LRG_STRT, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.lrg_straight_score_table);
+            editor.putInt(SCORE_LRG_STRT, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setScoreChance (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.chance_score_table);
-        editor.putInt(SCORE_CHANCE, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_CHANCE, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.chance_score_table);
+            editor.putInt(SCORE_CHANCE, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     public void setScoreYahtzee (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        TextView t1 = findViewById(R.id.yahtzee_score_table);
-        editor.putInt(SCORE_YAHTZEE, Integer.parseInt(t1.getText().toString()));
-        editor.commit();
+        int score = setScore.getInt(SCORE_YAHTZEE, 0);
+        if (score == 0) {
+            TextView t1 = findViewById(R.id.yahtzee_score_table);
+            editor.putInt(SCORE_YAHTZEE, Integer.parseInt(t1.getText().toString()));
+            int currRound = setScore.getInt(ROUND_NUMBER, 0);
+            editor.putInt(ROUND_NUMBER, currRound++);
+            editor.commit();
+        }
     }
 
     @Override

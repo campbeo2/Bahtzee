@@ -40,7 +40,7 @@
     <string name="d5">Dice 5</string>
 
     <string name="zero">0</string>
-    <string name="zeroScore">0.</string>
+    <string name="zeroScore">0</string>
 
     <string name="roll1">Roll Round 1</string>
     <string name="roll2">Roll Round 2</string>
