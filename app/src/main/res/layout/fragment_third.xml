@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/show_scores"
     android:layout_width="match_parent"
@@ -24,9 +23,10 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/one"
-                android:onClick="setScoreOne"
+                android:id="@+id/setScoreOne"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#000" />
+                android:textColor="#000"
+                tools:ignore="ButtonStyle" />
 
             <Button
                 android:layout_width="10dp"
@@ -34,7 +34,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/two"
-                android:onClick="setScoreTwo"
+                android:id="@+id/setScoreTwo"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
@@ -44,7 +44,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/three"
-                android:onClick="setScoreThree"
+                android:id="@+id/setScoreThree"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
         </TableRow>
@@ -85,7 +85,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/four"
-                android:onClick="setScoreFour"
+                android:id="@+id/setScoreFour"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
@@ -95,7 +95,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/five"
-                android:onClick="setScoreFive"
+                android:id="@+id/setScoreFive"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
 
@@ -105,7 +105,7 @@
                 android:layout_margin="1dp"
                 android:gravity="center"
                 android:text="@string/six"
-                android:onClick="setScoreSix"
+                android:id="@+id/setScoreSix"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000" />
         </TableRow>
@@ -146,19 +146,19 @@
             <Button
                 android:gravity="center"
                 android:text="@string/tok"
-                android:onClick="setThreeOfKind"
+                android:id="@+id/setScore3ok"
                 android:textColor="#000" />
 
             <Button
                 android:gravity="center"
                 android:text="@string/fok"
-                android:onClick="setFourOfKind"
+                android:id="@+id/setScore4ok"
                 android:textColor="#000" />
 
             <Button
                 android:gravity="center"
                 android:text="@string/full_house"
-                android:onClick="setFullHouse"
+                android:id="@+id/setScoreFullHouse"
                 android:textColor="#000" />
         </TableRow>
         <TableRow
@@ -193,19 +193,19 @@
             <Button
                 android:gravity="center"
                 android:text="@string/sm_straight"
-                android:onClick="setScoreSmStrt"
+                android:id="@+id/setScoreSmStrt"
                 android:textColor="#000" />
 
             <Button
                 android:gravity="center"
                 android:text="@string/lrg_straight"
-                android:onClick="setScoreLrgStrt"
+                android:id="@+id/setScoreLrgStrt"
                 android:textColor="#000" />
 
             <Button
                 android:gravity="center"
                 android:text="@string/chance"
-                android:onClick="setScoreChance"
+                android:id="@+id/setScoreChance"
                 android:textColor="#000" />
         </TableRow>
 
@@ -244,7 +244,7 @@
             <Button
                 android:gravity="center"
                 android:text="@string/yahtzee"
-                android:onClick="setScoreYahtzee"
+                android:id="@+id/setScoreYahtzee"
                 android:textColor="#000" />
 
         </TableRow>
@@ -262,15 +262,5 @@
 
         </TableRow>
     </TableLayout>
-
-    <Button
-        android:id="@+id/button_third"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Score"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

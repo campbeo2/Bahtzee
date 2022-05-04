@@ -584,10 +584,11 @@ public class MainActivity extends AppCompatActivity {
         if (scoreOne == 0) {
             TextView t1 = findViewById(R.id.one_score_table);
             editor.putInt(SCORE_ONE, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setScoreTwo (View v) {
@@ -597,10 +598,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.two_score_table);
             editor.putInt(SCORE_TWO, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setScoreThree (View v) {
@@ -610,10 +612,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.three_score_table);
             editor.putInt(SCORE_THREE, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setScoreFour (View v) {
@@ -623,10 +626,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.four_score_table);
             editor.putInt(SCORE_FOUR, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setScoreFive (View v) {
@@ -636,10 +640,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.five_score_table);
             editor.putInt(SCORE_FIVE, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setScoreSix (View v) {
@@ -649,10 +654,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.six_score_table);
             editor.putInt(SCORE_SIX, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setThreeOfKind (View v) {
@@ -662,10 +668,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.three_of_kind_score_table);
             editor.putInt(SCORE_3OK, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setFourOfKind (View v) {
@@ -675,10 +682,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.four_of_kind_score_table);
             editor.putInt(SCORE_4OK, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setFullHouse (View v) {
@@ -688,10 +696,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.full_house_score_table);
             editor.putInt(SCORE_FULL_HOUSE, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setScoreSmStrt (View v) {
@@ -701,10 +710,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.sm_straight_score_table);
             editor.putInt(SCORE_SM_STRT, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setScoreLrgStrt (View v) {
@@ -714,10 +724,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.lrg_straight_score_table);
             editor.putInt(SCORE_LRG_STRT, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setScoreChance (View v) {
@@ -727,10 +738,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.chance_score_table);
             editor.putInt(SCORE_CHANCE, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     public void setScoreYahtzee (View v) {
@@ -740,10 +752,11 @@ public class MainActivity extends AppCompatActivity {
         if (score == 0) {
             TextView t1 = findViewById(R.id.yahtzee_score_table);
             editor.putInt(SCORE_YAHTZEE, Integer.parseInt(t1.getText().toString()));
-            int currRound = setScore.getInt(ROUND_NUMBER, 0);
-            editor.putInt(ROUND_NUMBER, currRound++);
-            editor.commit();
         }
+        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        currRound += 1;
+        editor.putInt(ROUND_NUMBER, currRound);
+        editor.commit();
     }
 
     @Override
