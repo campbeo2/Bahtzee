@@ -57,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
+        SharedPreferences diceScore = getSharedPreferences(DICE_SCORES, MODE_PRIVATE);
+        SharedPreferences.Editor diceEditor = diceScore.edit();
+        diceEditor.clear();
+        diceEditor.commit();
         editor.clear();
         editor.commit();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
@@ -78,12 +82,12 @@ public class MainActivity extends AppCompatActivity {
         int dice3 = Integer.parseInt((String) d3.getText());
         int dice4 = Integer.parseInt((String) d4.getText());
         int dice5 = Integer.parseInt((String) d5.getText());
-        SharedPreferences diceScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
-        SharedPreferences.Editor edit = diceScore.edit();
-        int yahtzee = diceScore.getInt(SCORE_YAHTZEE, 0);
+        SharedPreferences scores = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
+        SharedPreferences.Editor edit = scores.edit();
+        int yahtzee = scores.getInt(SCORE_YAHTZEE, 0);
         if ((dice1 == dice2 && dice1 == dice3 && dice1 == dice4 && dice1 == dice5)
                 && yahtzee == 50) {
-            int yahtzeeBonus = diceScore.getInt(SCORE_YAHTZEE_BONUS, 0);
+            int yahtzeeBonus = scores.getInt(SCORE_YAHTZEE_BONUS, 0);
             edit.putInt(SCORE_YAHTZEE_BONUS, 100 + yahtzeeBonus);
             edit.commit();
         }
@@ -91,14 +95,14 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences(DICE_SCORES, MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
-        editor.commit();
+        editor.apply();
 
         editor.putInt(DICE_ONE, dice1);
         editor.putInt(DICE_TWO, dice2);
         editor.putInt(DICE_THREE, dice3);
         editor.putInt(DICE_FOUR, dice4);
         editor.putInt(DICE_FIVE, dice5);
-        editor.commit();
+        editor.apply();
     }
 
     @SuppressLint("SetTextI18n")
@@ -565,7 +569,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void yahtzeeScore(int[] arr) {
         int round_score = 0;
-        if (arr[0] == arr[1] && arr[0] == arr[2] && arr[0] == arr[3] && arr[0]== arr[4]) {
+        if ((arr[0] == arr[1] && arr[0] == arr[2] && arr[0] == arr[3] && arr[0]== arr[4])
+                && arr[0] != 0) {
             round_score = 50;
         }
         TextView score = findViewById(R.id.yahtzee_score_table);
