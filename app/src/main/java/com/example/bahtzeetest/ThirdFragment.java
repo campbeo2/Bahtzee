@@ -18,13 +18,14 @@ public class ThirdFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+
         binding = FragmentThirdBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        ((MainActivity) getActivity()).showScore(view);
         binding.buttonThird.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,6 +33,7 @@ public class ThirdFragment extends Fragment {
                         .navigate(R.id.action_ThirdFragment_to_SecondFragment);
             }
         });
+
     }
 
     @Override
