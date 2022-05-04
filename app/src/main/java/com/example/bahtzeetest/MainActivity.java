@@ -18,6 +18,7 @@ import com.example.bahtzeetest.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -316,6 +317,7 @@ public class MainActivity extends AppCompatActivity {
         yahtzee_bonus_score.setText(Integer.toString(score_yahtzee_bonus));
 
         if (score_upper > 62) {
+            score_upper += 35;
             TextView up_bonus_score = findViewById(R.id.up_bonus_score);
             up_bonus_score.setText(Integer.toString(35));
 
@@ -331,6 +333,35 @@ public class MainActivity extends AppCompatActivity {
 
         TextView low_score = findViewById(R.id.low_score);
         low_score.setText(Integer.toString(score_lower));
+
+        int roundNum = setScore.getInt(ROUND_NUMBER, 1);
+        TextView round_number = findViewById(R.id.roundNumber);
+        round_number.setText(Integer.toString(roundNum));
+
+        if (roundNum > 13) {
+            Button round1 = findViewById(R.id.button2);
+            round1.setVisibility(View.INVISIBLE);
+            Button round2 = findViewById(R.id.button3);
+            round2.setVisibility(View.INVISIBLE);
+            Button round3 = findViewById(R.id.button4);
+            round3.setVisibility(View.INVISIBLE);
+            TableLayout table = findViewById(R.id.tableLayout2);
+            table.setVisibility(View.INVISIBLE);
+            TableLayout table2 = findViewById(R.id.tableLayout3);
+            table2.setVisibility(View.INVISIBLE);
+            TableLayout table3 = findViewById(R.id.tableLayout4);
+            table3.setVisibility(View.INVISIBLE);
+            TableLayout finalTable = findViewById(R.id.finalTable);
+
+            TextView upperScore = findViewById(R.id.finalUpperTotal);
+            upperScore.setText(Integer.toString(score_upper));
+            TextView lowerScore = findViewById(R.id.finalLowerTotal);
+            lowerScore.setText(Integer.toString(score_lower));
+            TextView totalScore = findViewById(R.id.finalGrandTotal);
+            totalScore.setText(Integer.toString(score_total));
+            finalTable.setVisibility(View.VISIBLE);
+            round_number.setText("Game Over");
+        }
     }
 
     public void showScore (View v) {
@@ -585,7 +616,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.one_score_table);
             editor.putInt(SCORE_ONE, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -599,7 +630,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.two_score_table);
             editor.putInt(SCORE_TWO, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -613,7 +644,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.three_score_table);
             editor.putInt(SCORE_THREE, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -627,7 +658,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.four_score_table);
             editor.putInt(SCORE_FOUR, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -641,7 +672,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.five_score_table);
             editor.putInt(SCORE_FIVE, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -650,12 +681,12 @@ public class MainActivity extends AppCompatActivity {
     public void setScoreSix (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        int score = setScore.getInt(SCORE_SIX, 0);
+        int score = setScore.getInt(SCORE_SIX, 1);
         if (score == 0) {
             TextView t1 = findViewById(R.id.six_score_table);
             editor.putInt(SCORE_SIX, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -669,7 +700,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.three_of_kind_score_table);
             editor.putInt(SCORE_3OK, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -683,7 +714,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.four_of_kind_score_table);
             editor.putInt(SCORE_4OK, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -697,7 +728,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.full_house_score_table);
             editor.putInt(SCORE_FULL_HOUSE, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -711,7 +742,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.sm_straight_score_table);
             editor.putInt(SCORE_SM_STRT, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -725,7 +756,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.lrg_straight_score_table);
             editor.putInt(SCORE_LRG_STRT, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -739,7 +770,7 @@ public class MainActivity extends AppCompatActivity {
             TextView t1 = findViewById(R.id.chance_score_table);
             editor.putInt(SCORE_CHANCE, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
@@ -748,12 +779,12 @@ public class MainActivity extends AppCompatActivity {
     public void setScoreYahtzee (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        int score = setScore.getInt(SCORE_YAHTZEE, 0);
+        int score = setScore.getInt(SCORE_YAHTZEE, 1);
         if (score == 0) {
             TextView t1 = findViewById(R.id.yahtzee_score_table);
             editor.putInt(SCORE_YAHTZEE, Integer.parseInt(t1.getText().toString()));
         }
-        int currRound = setScore.getInt(ROUND_NUMBER, 0);
+        int currRound = setScore.getInt(ROUND_NUMBER, 1);
         currRound += 1;
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
