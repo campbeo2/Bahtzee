@@ -8,7 +8,13 @@
     <string name="startGame">Start Game</string>
     <string name="previous">Allocate Score</string>
 
-    <string name="hello_first_fragment">Game rules and details</string>
+    <string name="hello_first_fragment">Click Start Game to begin\n\nThe
+        top of the screen shows current scores\n\nEach
+        round consists of three rolls with a total of 13 rounds\n\nAfter
+        rolling the dice you can lock\nthe next dice by clicking on the\ndice, dice
+        can not be unlocked\n\nAfter rolling all three rounds\nclick score round\n\nFrom
+        the scoring page select a possible score and continue the next round\n\nEnjoy!
+    </string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
     <!-- Strings for the tables-->
@@ -33,18 +39,22 @@
     <string name="low_total">Low Total</string>
     <string name="total">Grand Total</string>
 
-    <string name="d1">Dice 1</string>
-    <string name="d2">Dice 2</string>
-    <string name="d3">Dice 3</string>
-    <string name="d4">Dice 4</string>
-    <string name="d5">Dice 5</string>
+    <string name="d1">Die 1</string>
+    <string name="d2">Die 2</string>
+    <string name="d3">Die 3</string>
+    <string name="d4">Die 4</string>
+    <string name="d5">Die 5</string>
 
     <string name="zero">0</string>
     <string name="zeroScore">0</string>
 
-    <string name="roll1">Roll Round 1</string>
-    <string name="roll2">Roll Round 2</string>
-    <string name="roll3">Roll Round 3</string>
+    <string name="roll1">Roll Dice</string>
+    <string name="roll2">Roll Dice</string>
+    <string name="roll3">Roll Dice</string>
 
     <string name="score_round">Score Round</string>
+    <string name="round_number">Round Number: </string>
+    <string name="upper_total">Upper Total: </string>
+    <string name="lower_total">Lower Total: </string>
+    <string name="grand_total">Grand Total: </string>
 </resources>

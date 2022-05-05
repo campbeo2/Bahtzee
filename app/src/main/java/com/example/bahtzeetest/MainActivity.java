@@ -29,13 +29,16 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
 
+    // Variables to be used in SharedPreference for
+    // Getting scores from dice
     public static final String DICE_SCORES = "diceScore";
     public static final String DICE_ONE = "dice1";
     public static final String DICE_TWO = "dice2";
     public static final String DICE_THREE = "dice3";
     public static final String DICE_FOUR = "dice4";
     public static final String DICE_FIVE = "dice5";
-
+    // Variables to be used in SharedPreference for
+    // Getting scores from scoring table
     public static final String SELECTED_SCORE = "selectedScore";
     public static final String SCORE_ONE = "one";
     public static final String SCORE_TWO = "two";
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String SCORE_YAHTZEE_BONUS = "yahtzeeBonus";
     public static final String ROUND_NUMBER = "roundNumber";
 
+    @SuppressLint("ApplySharedPref")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
     }
 
+    // Gets scores from dice and adds to diceScore Shared preference
+    @SuppressLint("ApplySharedPref")
     public void getScores(View view) {
         Button d1 = findViewById(R.id.but11);
         Button d2 = findViewById(R.id.but12);
@@ -85,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
         int dice5 = Integer.parseInt((String) d5.getText());
         SharedPreferences scores = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor edit = scores.edit();
+        // Checks to see if score counts for yahtzee bonus
         int yahtzee = scores.getInt(SCORE_YAHTZEE, 0);
         if ((dice1 == dice2 && dice1 == dice3 && dice1 == dice4 && dice1 == dice5)
                 && yahtzee == 50) {
@@ -106,15 +113,18 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    // function for rolling the dice first round
     @SuppressLint("SetTextI18n")
     public void rollDice(View v) {
         Random rand = new Random();
+        // Make an array of random numbers for the dice rolls
         int[] rand_array = new int[5];
         for (int i = 0; i < 5; i++) {
             int rand_number = rand.nextInt(6) + 1;
             rand_array[i] = rand_number;
         }
         Button but1 = findViewById(R.id.but1);
+        // If the dice have not been rolled update buttons
         if (but1.getText().equals("0")) {
             but1.setText(Integer.toString(rand_array[0]));
             Button but2 = findViewById(R.id.but2);
@@ -128,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // function to roll dice the second time
     @SuppressLint("SetTextI18n")
     public void rollDiceTwo(View v) {
         Random rand = new Random();
@@ -137,6 +148,7 @@ public class MainActivity extends AppCompatActivity {
             rand_array[i] = rand_number;
         }
 
+        // Checks to see if any of the dice were locked from round 1
         Button but1 = findViewById(R.id.but6);
         if (but1.getText().equals("0"))
             but1.setText(Integer.toString(rand_array[0]));
@@ -154,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
             but5.setText(Integer.toString(rand_array[4]));
         }
 
+        // function to roll the dice the third time
     @SuppressLint("SetTextI18n")
     public void rollDiceThree(View v) {
         Random rand = new Random();
@@ -162,6 +175,8 @@ public class MainActivity extends AppCompatActivity {
             int rand_number = rand.nextInt(6) + 1;
             rand_array[i] = rand_number;
         }
+
+        // Checks to see if any of the dice were locked from round 2
         Button but1 = findViewById(R.id.but11);
         if (but1.getText().equals("0"))
             but1.setText(Integer.toString(rand_array[0]));
@@ -179,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
             but5.setText(Integer.toString(rand_array[4]));
     }
 
+    // Function to lock the dice for the next round
     public void lockDiceOne (View v) {
         Button but = findViewById(R.id.but1);
         String num = (String) but.getText();
@@ -186,6 +202,7 @@ public class MainActivity extends AppCompatActivity {
         round2_but.setText(num);
     }
 
+    // Function to lock the dice for the next round
     public void lockDiceTwo (View v) {
         Button but = findViewById(R.id.but2);
         String num = (String) but.getText();
@@ -193,6 +210,7 @@ public class MainActivity extends AppCompatActivity {
         round2_but.setText(num);
     }
 
+    // Function to lock the dice for the next round
     public void lockDiceThree (View v) {
         Button but = findViewById(R.id.but3);
         String num = (String) but.getText();
@@ -200,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
         round2_but.setText(num);
     }
 
+    // Function to lock the dice for the next round
     public void lockDiceFour (View v) {
         Button but = findViewById(R.id.but4);
         String num = (String) but.getText();
@@ -207,6 +226,7 @@ public class MainActivity extends AppCompatActivity {
         round2_but.setText(num);
     }
 
+    // Function to lock the dice for the next round
     public void lockDiceFive (View v) {
         Button but = findViewById(R.id.but5);
         String num = (String) but.getText();
@@ -214,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
         round2_but.setText(num);
     }
 
+    // Function to lock the dice for round 3
     public void lockDiceOneTwo (View v) {
         Button round2_but = findViewById(R.id.but6);
         String num = (String) round2_but.getText();
@@ -222,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
         round3_but.setText(num);
     }
 
+    // Function to lock the dice for round 3
     public void lockDiceTwoTwo (View v) {
         Button round2_but = findViewById(R.id.but7);
         String num = (String) round2_but.getText();
@@ -230,6 +252,7 @@ public class MainActivity extends AppCompatActivity {
         round3_but.setText(num);
     }
 
+    // Function to lock the dice for round 3
     public void lockDiceThreeTwo (View v) {
         Button round2_but = findViewById(R.id.but8);
         String num = (String) round2_but.getText();
@@ -238,6 +261,7 @@ public class MainActivity extends AppCompatActivity {
         round3_but.setText(num);
     }
 
+    // Function to lock the dice for round 3
     public void lockDiceFourTwo (View v) {
         Button round2_but = findViewById(R.id.but9);
         String num = (String) round2_but.getText();
@@ -246,6 +270,7 @@ public class MainActivity extends AppCompatActivity {
         round3_but.setText(num);
     }
 
+    // Function to lock the dice for round 3
     public void lockDiceFiveTwo (View v) {
         Button round2_but = findViewById(R.id.but10);
         String num = (String) round2_but.getText();
@@ -254,6 +279,9 @@ public class MainActivity extends AppCompatActivity {
         round3_but.setText(num);
     }
 
+    // Function to add scores to the score table on the roll page using values
+    // from the selected scores on the scoring page
+    @SuppressLint("SetTextI18n")
     public void allocateTable (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         int score_one = setScore.getInt(SCORE_ONE, 0);
@@ -316,11 +344,11 @@ public class MainActivity extends AppCompatActivity {
         TextView yahtzee_bonus_score = findViewById(R.id.yahtzee_bonus_score);
         yahtzee_bonus_score.setText(Integer.toString(score_yahtzee_bonus));
 
+        // Calculate if the upper bonus has been earned
         if (score_upper > 62) {
             score_upper += 35;
             TextView up_bonus_score = findViewById(R.id.up_bonus_score);
             up_bonus_score.setText(Integer.toString(35));
-
             TextView total_score = findViewById(R.id.total_score);
             total_score.setText(Integer.toString(score_total + 35));
         } else {
@@ -338,32 +366,41 @@ public class MainActivity extends AppCompatActivity {
         TextView round_number = findViewById(R.id.roundNumber);
         round_number.setText(Integer.toString(roundNum));
 
+        // Call end game functions to show menu
         if (roundNum > 13) {
-            Button round1 = findViewById(R.id.button2);
-            round1.setVisibility(View.INVISIBLE);
-            Button round2 = findViewById(R.id.button3);
-            round2.setVisibility(View.INVISIBLE);
-            Button round3 = findViewById(R.id.button4);
-            round3.setVisibility(View.INVISIBLE);
-            TableLayout table = findViewById(R.id.tableLayout2);
-            table.setVisibility(View.INVISIBLE);
-            TableLayout table2 = findViewById(R.id.tableLayout3);
-            table2.setVisibility(View.INVISIBLE);
-            TableLayout table3 = findViewById(R.id.tableLayout4);
-            table3.setVisibility(View.INVISIBLE);
-            TableLayout finalTable = findViewById(R.id.finalTable);
-
-            TextView upperScore = findViewById(R.id.finalUpperTotal);
-            upperScore.setText(Integer.toString(score_upper));
-            TextView lowerScore = findViewById(R.id.finalLowerTotal);
-            lowerScore.setText(Integer.toString(score_lower));
-            TextView totalScore = findViewById(R.id.finalGrandTotal);
-            totalScore.setText(Integer.toString(score_total));
-            finalTable.setVisibility(View.VISIBLE);
+            endOfGame(score_upper, score_lower, score_total);
             round_number.setText("Game Over");
         }
     }
 
+    // If the game is over hide the dice and show the final scoring
+    @SuppressLint("SetTextI18n")
+    public void endOfGame(int score_upper, int score_lower, int score_total) {
+        Button round1 = findViewById(R.id.button2);
+        round1.setVisibility(View.INVISIBLE);
+        Button round2 = findViewById(R.id.button3);
+        round2.setVisibility(View.INVISIBLE);
+        Button round3 = findViewById(R.id.button4);
+        round3.setVisibility(View.INVISIBLE);
+        TableLayout table = findViewById(R.id.tableLayout2);
+        table.setVisibility(View.INVISIBLE);
+        TableLayout table2 = findViewById(R.id.tableLayout3);
+        table2.setVisibility(View.INVISIBLE);
+        TableLayout table3 = findViewById(R.id.tableLayout4);
+        table3.setVisibility(View.INVISIBLE);
+        TableLayout finalTable = findViewById(R.id.finalTable);
+
+        TextView upperScore = findViewById(R.id.finalUpperTotal);
+        upperScore.setText(Integer.toString(score_upper));
+        TextView lowerScore = findViewById(R.id.finalLowerTotal);
+        lowerScore.setText(Integer.toString(score_lower));
+        TextView totalScore = findViewById(R.id.finalGrandTotal);
+        totalScore.setText(Integer.toString(score_total));
+        finalTable.setVisibility(View.VISIBLE);
+
+    }
+
+    // function to display the potential scores for the previous roll on the scoring page
     public void showScore (View v) {
         SharedPreferences sharedPreferences = this.getSharedPreferences(DICE_SCORES, MODE_PRIVATE);
         int dice1 = sharedPreferences.getInt(DICE_ONE, 0);
@@ -388,6 +425,8 @@ public class MainActivity extends AppCompatActivity {
         int scoreChance = selectedScore.getInt(SCORE_CHANCE, 0);
         int scoreYahtzee = selectedScore.getInt(SCORE_YAHTZEE, 0);
 
+        // Check to see if the score has not yet been used and show possible score if it has
+        // not been used
         if (scoreOne == 0)
             oneScore(arr);
         if (scoreTwo == 0)
@@ -416,6 +455,8 @@ public class MainActivity extends AppCompatActivity {
             yahtzeeScore(arr);
     }
 
+    // Calculate score
+    @SuppressLint("SetTextI18n")
     public void oneScore(int[] arr) {
         int round_score = 0;
         for (int j : arr) {
@@ -427,6 +468,8 @@ public class MainActivity extends AppCompatActivity {
         one_score.setText(Integer.toString(round_score));
     }
 
+    // Calculate score
+    @SuppressLint("SetTextI18n")
     public void twoScore(int[] arr) {
         int round_score = 0;
         for (int j : arr) {
@@ -438,6 +481,8 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    // Calculate score
+    @SuppressLint("SetTextI18n")
     public void threeScore(int[] arr) {
         int round_score = 0;
         for (int j : arr) {
@@ -449,6 +494,8 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    // Calculate score
+    @SuppressLint("SetTextI18n")
     public void fourScore(int[] arr) {
         int round_score = 0;
         for (int j : arr) {
@@ -460,6 +507,8 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    // Calculate score
+    @SuppressLint("SetTextI18n")
     public void fiveScore(int[] arr) {
         int round_score = 0;
         for (int j : arr) {
@@ -471,6 +520,8 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    // Calculate score
+    @SuppressLint("SetTextI18n")
     public void sixScore(int[] arr) {
         int round_score = 0;
         for (int j : arr) {
@@ -482,10 +533,13 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    // Calculate score
+    @SuppressLint("SetTextI18n")
     public void threeOfKindScore(int[] arr) {
         int round_score = 0;
         int repeat1 = 0; int repeat2 = 0; int repeat3 = 0;
         int repeat4 = 0; int repeat5 = 0; int repeat6 = 0;
+        // Check each number on the dice for repeats
         for (int j : arr) {
             if (j == 1) {
                 repeat1++;
@@ -501,6 +555,7 @@ public class MainActivity extends AppCompatActivity {
                 repeat6++;
             }
         }
+        // If repeats for one of the dice is more than 3 calculate the score from all dice
         if (repeat1 >= 3 || repeat2 >= 3 || repeat3 >= 3 || repeat4 >= 3 ||
                 repeat5 >= 3 || repeat6 >= 3 ) {
             round_score = (repeat1) + (repeat2 * 2) + (repeat3 * 3) + (repeat4 * 4)
@@ -510,10 +565,12 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    @SuppressLint("SetTextI18n")
     public void fourOfKindScore(int[] arr) {
         int round_score = 0;
         int repeat1 = 0; int repeat2 = 0; int repeat3 = 0;
         int repeat4 = 0; int repeat5 = 0; int repeat6 = 0;
+        // Check each number on the dice for repeats
         for (int j : arr) {
             if (j == 1) {
                 repeat1++;
@@ -529,6 +586,8 @@ public class MainActivity extends AppCompatActivity {
                 repeat6++;
             }
         }
+
+        // If repeats for one of the dice is more than 4 calculate the score from all dice
         if (repeat1 >= 4 || repeat2 >= 4 || repeat3 >= 4 || repeat4 >= 4 ||
                 repeat5 >= 4 || repeat6 >= 4 ) {
             round_score = (repeat1) + (repeat2 * 2) + (repeat3 * 3) + (repeat4 * 4)
@@ -538,10 +597,12 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    @SuppressLint("SetTextI18n")
     public void fullHouseScore(int[] arr) {
         int round_score = 0;
         int repeat1 = 0; int repeat2 = 0; int repeat3 = 0;
         int repeat4 = 0; int repeat5 = 0; int repeat6 = 0;
+        // Check each number on the dice for repeats
         for (int j : arr) {
             if (j == 1) {
                 repeat1++;
@@ -557,6 +618,9 @@ public class MainActivity extends AppCompatActivity {
                 repeat6++;
             }
         }
+
+        // If one of the numbers repeats three times and one of the numbers repeats 2 times
+        // award 25 points
         if ((repeat1 == 3 || repeat2 == 3 || repeat3 == 3 || repeat4 == 3 ||
                 repeat5 == 3 || repeat6 == 3) && (repeat1 == 2 || repeat2 == 2 ||
                 repeat3 == 2 || repeat4 == 2 || repeat5 == 2 || repeat6 == 2)) {
@@ -566,21 +630,40 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    @SuppressLint("SetTextI18n")
     public void smStrtScore(int[] arr) {
         int round_score = 0;
+        // count the length of the run
+        int count = 0;
         Arrays.sort(arr);
-        if ((arr[0] == 1 && arr[1] == 2 && arr[2] == 3 && arr[3] == 4) ||
-                (arr[0] == 2 && arr[1] == 3 && arr[2] == 4 && arr[3] == 5) ||
-                (arr[0] == 3 && arr[1] == 4 && arr[2] == 5 && arr[3] == 6)) {
-            round_score = 30;
+        // If there is a run of 4 award 30 points
+        for (int i = 0; i < arr.length - 1; i++) {
+            // if the next dice is one more than current dice add one to count
+           if (arr[i] + 1 == arr[i + 1]) {
+                count++;
+                // if the current dice is the same as the next dice continue
+            } else if (arr[i] == arr[i + 1]) {
+                continue;
+                // if the current dice is not the same or one more reset count
+            } else {
+                count = 0;
+            }
+            // If count is greater or equal to three set the round score to 30
+            if (count >= 3) {
+                round_score = 30;
+                break;
+            }
         }
         TextView score = findViewById(R.id.sm_straight_score_table);
         score.setText(Integer.toString(round_score));
     }
 
+    @SuppressLint("SetTextI18n")
     public void lrgStrtScore(int[] arr) {
         int round_score = 0;
         Arrays.sort(arr);
+
+        // if there is a run of 5 award 40 points
         if ((arr[0] == 1 && arr[1] == 2 && arr[2] == 3 && arr[3] == 4 && arr[4] == 5) ||
                 (arr[0] == 2 && arr[1] == 3 && arr[2] == 4 && arr[3] == 5 && arr[4] == 6)) {
             round_score = 40;
@@ -589,8 +672,10 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    @SuppressLint("SetTextI18n")
     public void chanceScore(int[] arr) {
         int round_score = 0;
+        // add score of all dice together
         for (int j : arr) {
             round_score += j;
         }
@@ -598,8 +683,10 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    @SuppressLint("SetTextI18n")
     public void yahtzeeScore(int[] arr) {
         int round_score = 0;
+        // If all dice are the same award 50 points
         if ((arr[0] == arr[1] && arr[0] == arr[2] && arr[0] == arr[3] && arr[0]== arr[4])
                 && arr[0] != 0) {
             round_score = 50;
@@ -608,6 +695,8 @@ public class MainActivity extends AppCompatActivity {
         score.setText(Integer.toString(round_score));
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreOne (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -622,6 +711,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreTwo (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -636,6 +727,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreThree (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -650,6 +743,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreFour (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -663,7 +758,8 @@ public class MainActivity extends AppCompatActivity {
         editor.putInt(ROUND_NUMBER, currRound);
         editor.commit();
     }
-
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreFive (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -678,10 +774,12 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreSix (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
-        int score = setScore.getInt(SCORE_SIX, 1);
+        int score = setScore.getInt(SCORE_SIX, 0);
         if (score == 0) {
             TextView t1 = findViewById(R.id.six_score_table);
             editor.putInt(SCORE_SIX, Integer.parseInt(t1.getText().toString()));
@@ -692,6 +790,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setThreeOfKind (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -706,6 +806,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setFourOfKind (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -720,6 +822,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setFullHouse (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -734,6 +838,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreSmStrt (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -748,6 +854,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreLrgStrt (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -762,6 +870,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreChance (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
@@ -776,6 +886,8 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    // Function to set the score on button click of scoring page
+    @SuppressLint("ApplySharedPref")
     public void setScoreYahtzee (View v) {
         SharedPreferences setScore = getSharedPreferences(SELECTED_SCORE, MODE_PRIVATE);
         SharedPreferences.Editor editor = setScore.edit();
