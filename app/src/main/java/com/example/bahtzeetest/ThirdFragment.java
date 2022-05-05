@@ -26,109 +26,70 @@ public class ThirdFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ((MainActivity) getActivity()).showScore(view);
-        binding.setScoreOne.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreOne(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreOne.setOnClickListener(view1 -> {
+            ((MainActivity) getActivity()).setScoreOne(view1);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreTwo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreTwo(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreTwo.setOnClickListener(view12 -> {
+            ((MainActivity) getActivity()).setScoreTwo(view12);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreThree.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreThree(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreThree.setOnClickListener(view13 -> {
+            ((MainActivity) getActivity()).setScoreThree(view13);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreFour.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreFour(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreFour.setOnClickListener(view14 -> {
+            ((MainActivity) getActivity()).setScoreFour(view14);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreFive.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreFive(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreFive.setOnClickListener(view15 -> {
+            ((MainActivity) getActivity()).setScoreFive(view15);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreSix.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreSix(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreSix.setOnClickListener(view16 -> {
+            ((MainActivity) getActivity()).setScoreSix(view16);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScore3ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setThreeOfKind(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScore3ok.setOnClickListener(view17 -> {
+            ((MainActivity) getActivity()).setThreeOfKind(view17);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScore4ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setFourOfKind(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScore4ok.setOnClickListener(view113 -> {
+            ((MainActivity) getActivity()).setFourOfKind(view113);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreFullHouse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setFullHouse(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreFullHouse.setOnClickListener(view112 -> {
+            ((MainActivity) getActivity()).setFullHouse(view112);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreSmStrt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreSmStrt(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreSmStrt.setOnClickListener(view111 -> {
+            ((MainActivity) getActivity()).setScoreSmStrt(view111);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreLrgStrt.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreLrgStrt(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreLrgStrt.setOnClickListener(view110 -> {
+            ((MainActivity) getActivity()).setScoreLrgStrt(view110);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreChance.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreChance(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreChance.setOnClickListener(view19 -> {
+            ((MainActivity) getActivity()).setScoreChance(view19);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
-        binding.setScoreYahtzee.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((MainActivity) getActivity()).setScoreYahtzee(view);
-                NavHostFragment.findNavController(ThirdFragment.this)
-                        .navigate(R.id.action_ThirdFragment_to_SecondFragment);
-            }
+        binding.setScoreYahtzee.setOnClickListener(view18 -> {
+            ((MainActivity) getActivity()).setScoreYahtzee(view18);
+            NavHostFragment.findNavController(ThirdFragment.this)
+                    .navigate(R.id.action_ThirdFragment_to_SecondFragment);
         });
     }
 
