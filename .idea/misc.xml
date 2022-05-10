@@ -3,14 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Aidan/Documents/GitHub/Bahtzee/app/src/main/res/layout/activity_main.xml" value="0.23867753623188406" />
+        <entry key="..\:/Users/Aidan/Documents/GitHub/Bahtzee/app/src/main/res/layout/content_main.xml" value="0.23867753623188406" />
+        <entry key="..\:/Users/Aidan/Documents/GitHub/Bahtzee/app/src/main/res/layout/fragment_first.xml" value="0.23867753623188406" />
+        <entry key="..\:/Users/Aidan/Documents/GitHub/Bahtzee/app/src/main/res/layout/fragment_second.xml" value="0.23867753623188406" />
+        <entry key="..\:/Users/Aidan/Documents/GitHub/Bahtzee/app/src/main/res/layout/fragment_third.xml" value="0.23867753623188406" />
         <entry key="..\:/Users/owen1/Documents/Bahtzee/app/src/main/res/layout/content_main.xml" value="0.36685773840541946" />
-        <entry key="..\:/Users/owen1/Documents/Bahtzee/app/src/main/res/layout/fragment_first.xml" value="0.6290322580645161" />
-        <entry key="..\:/Users/owen1/Documents/Bahtzee/app/src/main/res/layout/fragment_second.xml" value="0.5" />
+        <entry key="..\:/Users/owen1/Documents/Bahtzee/app/src/main/res/layout/fragment_first.xml" value="0.75" />
+        <entry key="..\:/Users/owen1/Documents/Bahtzee/app/src/main/res/layout/fragment_second.xml" value="0.2052980132450331" />
         <entry key="..\:/Users/owen1/Documents/Bahtzee/app/src/main/res/layout/fragment_third.xml" value="0.20520833333333333" />
         <entry key="..\:/Users/owen1/Documents/GitHub/Bahtzee/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/owen1/Documents/GitHub/Bahtzee/app/src/main/res/layout/content_main.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/owen1/Documents/GitHub/Bahtzee/app/src/main/res/layout/fragment_first.xml" value="0.25" />
-        <entry key="..\:/Users/owen1/Documents/GitHub/Bahtzee/app/src/main/res/layout/fragment_second.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/owen1/Documents/GitHub/Bahtzee/app/src/main/res/layout/fragment_second.xml" value="0.1" />
         <entry key="..\:/Users/owen1/Documents/GitHub/Bahtzee/app/src/main/res/layout/fragment_third.xml" value="0.1" />
       </map>
     </option>
